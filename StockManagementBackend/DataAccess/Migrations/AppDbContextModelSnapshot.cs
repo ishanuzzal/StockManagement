@@ -52,7 +52,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CategoriesId")
+                    b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -105,7 +105,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProductsId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("Qty")
@@ -166,19 +165,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1a1f4c0b-450f-4b85-be59-4ec803524ac1",
+                            Id = "40647995-54ee-46ec-82fc-e1621e849ec4",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "bdf7bd62-c3d5-4622-a6c5-69aafe675cdf",
+                            Id = "8f45d8bc-f03b-42dd-9108-ac721ccea092",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "80c79ed9-22dd-4e25-a1fe-ebfb986a6e51",
+                            Id = "63409ed2-433d-403c-956b-7e45254c2253",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -393,13 +392,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Categories", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataAccess.Entities.Users", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Categories");
@@ -411,9 +409,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("DataAccess.Entities.Products", "Products")
                         .WithMany("Transactions")
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductsId");
 
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany("Transactions")

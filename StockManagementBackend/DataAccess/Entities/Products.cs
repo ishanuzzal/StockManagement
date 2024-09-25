@@ -36,15 +36,12 @@ namespace DataAccess.Entities
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
-
-        [Required]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         [ForeignKey("UserId")]
         public Users User { get; set; }
 
-        [Required]
-        public int CategoriesId { get; set; }
+        public int? CategoriesId { get; set; }
 
         [ForeignKey("CategoriesId")]
         public Categories Categories { get; set; }

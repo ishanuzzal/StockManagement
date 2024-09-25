@@ -36,7 +36,6 @@ namespace DataAccess.Entities
         [ForeignKey("UserId")]
         public Users Users { get; set; }
 
-        [Required]
         public string? ProductsId { get; set; }
 
         [ForeignKey("ProductsId")]

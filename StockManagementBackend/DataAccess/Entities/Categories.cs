@@ -14,6 +14,9 @@ namespace DataAccess.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
         public DateTime CreatedAtUtc { get; set; }
         public DateTime? UpdatedAtUtc { get; set; }
 

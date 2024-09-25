@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Reflection.Emit;
 
 
 namespace DataAccess.DataBaseContext
@@ -13,10 +14,6 @@ namespace DataAccess.DataBaseContext
             {
 
             }
-
-
-
-
             public DbSet<Products> Products { get; set; }
             public DbSet<Users> AppUsers { get; set; }
             public DbSet<Transactions> Transactions { get; set; }
@@ -25,6 +22,7 @@ namespace DataAccess.DataBaseContext
             protected override void OnModelCreating(ModelBuilder builder)
             {
             base.OnModelCreating(builder); 
+
 
             // Seed initial roles
             var roles = new List<IdentityRole>
@@ -47,6 +45,18 @@ namespace DataAccess.DataBaseContext
             };
 
             builder.Entity<IdentityRole>().HasData(roles);
+
+            builder.Entity<Products>()
+        .HasOne(p => p.User)
+        .WithMany(u => u.Products)
+        .HasForeignKey(p => p.UserId)
+        .OnDelete(DeleteBehavior.NoAction); 
+
+            builder.Entity<Products>()
+                .HasOne(p => p.Categories)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoriesId)
+                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }
