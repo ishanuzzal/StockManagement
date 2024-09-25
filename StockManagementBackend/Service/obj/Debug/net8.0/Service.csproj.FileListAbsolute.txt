@@ -10,3 +10,7 @@ D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Ser
 D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\refint\Service.dll
 D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.pdb
 D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\ref\Service.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\bin\Debug\net8.0\DataAccess.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\bin\Debug\net8.0\DataAccess.pdb
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.csproj.AssemblyReference.cache
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.csproj.CopyComplete

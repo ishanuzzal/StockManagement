@@ -9,6 +9,7 @@ namespace DataAccess.Repositories.IRepositories
 {
     public interface IGenericRepository<T> where T: class
     {
+        Task<T> GetAsync(Expression<Func<T, bool>> filter = null);
         Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter = null, CancellationToken cancellationToken = default);
         Task AddAsync(T entity);
         void UpdateAsync(T entity);

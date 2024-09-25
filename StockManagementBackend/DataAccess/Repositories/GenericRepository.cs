@@ -25,6 +25,11 @@ namespace DataAccess.Repositories
             _dbContext.Set<TEntity>().Remove(entity);
         }
 
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter = null)
+        {
+            return await _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(filter);
+        }
+
         public Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
