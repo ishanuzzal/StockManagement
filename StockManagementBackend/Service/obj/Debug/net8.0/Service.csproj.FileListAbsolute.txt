@@ -1,0 +1,12 @@
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\bin\Debug\net8.0\Service.deps.json
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\bin\Debug\net8.0\Service.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\bin\Debug\net8.0\Service.pdb
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.AssemblyInfoInputs.cache
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.AssemblyInfo.cs
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.csproj.CoreCompileInputs.cache
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.sourcelink.json
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\refint\Service.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\Service.pdb
+D:\Onnorokom\StockManagement\StockManagementBackend\Service\obj\Debug\net8.0\ref\Service.dll
