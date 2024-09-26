@@ -9,7 +9,7 @@ namespace Service.Interfaces
 {
     public interface IAuthService
     {
-        public Task<ApiResponse<VaidUserDto>> Login(UserLoginDto userLoginDto);
-        public Task<ApiResponse<string>> Registration(UseRegistrationDto useRegistrationDto);
+        public Task<ServiceResponse<VaidUserDto>> Login(UserLoginDto userLoginDto);
+        public Task<ServiceResponse<string>> Registration(UseRegistrationDto useRegistrationDto);
     }
 }

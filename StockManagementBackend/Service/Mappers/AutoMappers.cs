@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using DataAccess.Entities;
+using Service.dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,9 @@ namespace Service.Mappers
 {
     public class AutoMapperProfile : Profile
     {
-        public AutoMapperProfile() { }
+        public AutoMapperProfile() {
+            CreateMap<Users,ShowUserDto>();
+            CreateMap<Users, ShowUserDto>().ReverseMap();
+        }
     }
 }

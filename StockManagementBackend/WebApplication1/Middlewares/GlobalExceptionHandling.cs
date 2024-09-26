@@ -21,7 +21,7 @@ namespace WebApplication1.Middlewares
                     _logger.LogError(ex.Message);
 
                     context.Response.StatusCode = 500;
-                    await context.Response.WriteAsJsonAsync(new ApiResponse<object>
+                    await context.Response.WriteAsJsonAsync(new ServiceResponse<object>
                     {
                         Success = false,
                         Message = "Internal Server Error"

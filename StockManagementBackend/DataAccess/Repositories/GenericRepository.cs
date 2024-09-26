@@ -20,9 +20,9 @@ namespace DataAccess.Repositories
             await _dbContext.Set<TEntity>().AddAsync(entity);
         }
 
-        public void DeleteAsync(TEntity entity)
+        public  void DeleteAsync(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Remove(entity);
+             _dbContext.Set<TEntity>().Remove(entity);
         }
 
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter = null)
@@ -30,9 +30,9 @@ namespace DataAccess.Repositories
             return await _dbContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(filter);
         }
 
-        public Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null, CancellationToken cancellationToken = default)
+        public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await (filter == null ? _dbContext.Set<TEntity>().ToListAsync(cancellationToken) : _dbContext.Set<TEntity>().Where(filter).ToListAsync(cancellationToken));
         }
 
         public void UpdateAsync(TEntity entity)

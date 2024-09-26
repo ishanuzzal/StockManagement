@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Service.Interfaces;
 using Service.Mappers;
-using Service.services.AuthService;
+using Service.services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

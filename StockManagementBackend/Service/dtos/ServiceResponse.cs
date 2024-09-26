@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service.dtos
 {
-    public class ApiResponse<T>
+    public class ServiceResponse<T>
     {
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;

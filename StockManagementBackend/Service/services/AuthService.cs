@@ -16,9 +16,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.services.AuthService
+namespace Service.services
 {
-    public class AuthService: IAuthService
+    public class AuthService : IAuthService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _config;
@@ -42,39 +42,39 @@ namespace Service.services.AuthService
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
         }
 
-        public async Task<ApiResponse<string>> Registration(UseRegistrationDto useRegistrationDto)
+        public async Task<ServiceResponse<string>> Registration(UseRegistrationDto useRegistrationDto)
         {
-            var response = new ApiResponse<string>();   
-                    var appuser = new Users
-                    {
-                        UserName = useRegistrationDto.UserName,
-                        Email = useRegistrationDto.Email,
-                    };
-                    var createUser = await _userManager.CreateAsync(appuser, useRegistrationDto.Password);
-                    var addRole = await _userManager.AddToRoleAsync(appuser, useRegistrationDto.Role);
+            var response = new ServiceResponse<string>();
+            var appuser = new Users
+            {
+                UserName = useRegistrationDto.UserName,
+                Email = useRegistrationDto.Email,
+            };
+            var createUser = await _userManager.CreateAsync(appuser, useRegistrationDto.Password);
+            var addRole = await _userManager.AddToRoleAsync(appuser, useRegistrationDto.Role);
 
-                    if (createUser.Succeeded && addRole.Succeeded)
-                    {
-                      try
-                        {
-                        await _unitOfWork.Complete();
+            if (createUser.Succeeded && addRole.Succeeded)
+            {
+                try
+                {
+                    await _unitOfWork.Complete();
 
-                        }
-                      catch(Exception ex)
-                        {
-                            _logger.LogError(ex.Message);
-                            throw;
-                        }
-                        response.Success = true; response.Message = "User created";
-                        return response;
-                    }
-                response.Success = false;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                    throw;
+                }
+                response.Success = true; response.Message = "User created";
+                return response;
+            }
+            response.Success = false;
             return response;
         }
 
-        public async Task<ApiResponse<VaidUserDto>> Login(UserLoginDto userLoginDto)
+        public async Task<ServiceResponse<VaidUserDto>> Login(UserLoginDto userLoginDto)
         {
-            var response = new ApiResponse<VaidUserDto>();
+            var response = new ServiceResponse<VaidUserDto>();
             try
             {
                 var user = await _userRepository.GetAsync(
@@ -91,11 +91,12 @@ namespace Service.services.AuthService
                 response.Data.token = GenerateAccessToken(user.Email, user.UserName, role[0]);
                 response.Data.UserName = user.UserName;
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 _logger.LogError(ex.Message, ex);
                 throw;
             }
-            
+
 
             return response;
         }
