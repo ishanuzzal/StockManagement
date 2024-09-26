@@ -166,19 +166,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "041e1ec4-2a6a-4a21-85ee-b346f4e2a32f",
+                            Id = "f6fc55da-2834-4aee-a766-16cd401ee322",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "5d423f73-e738-47d7-a631-70857de83bab",
+                            Id = "b0e86a5b-e3f1-473f-8778-1febb0a9455b",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "60a802bd-e666-493f-9d61-f3bda2ee2a7c",
+                            Id = "b7cb2f53-6291-4210-a742-0694ecaeabb3",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -409,12 +409,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Products", "Products")
                         .WithMany("Transactions")
                         .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Products");
 

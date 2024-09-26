@@ -17,6 +17,6 @@ namespace DataAccess.Entities
         public DateTime? UpdatedAtUtc { get; set; }
 
         public ICollection<Products> Products { get; set; } = new List<Products>();
-        public ICollection<Transactions> Transactions { get; set; } = new List<Transactions>();
+        public ICollection<Transactions> Transactions { get; set; }
     }
 }

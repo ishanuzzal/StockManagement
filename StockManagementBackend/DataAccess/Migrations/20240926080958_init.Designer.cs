@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240925073600_init")]
+    [Migration("20240926080958_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -36,11 +36,14 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UsersId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -55,7 +58,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CategoriesId")
+                    b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -84,7 +87,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -108,7 +110,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProductsId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("Qty")
@@ -128,7 +129,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -169,19 +169,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1a1f4c0b-450f-4b85-be59-4ec803524ac1",
+                            Id = "f6fc55da-2834-4aee-a766-16cd401ee322",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "bdf7bd62-c3d5-4622-a6c5-69aafe675cdf",
+                            Id = "b0e86a5b-e3f1-473f-8778-1febb0a9455b",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "80c79ed9-22dd-4e25-a1fe-ebfb986a6e51",
+                            Id = "b7cb2f53-6291-4210-a742-0694ecaeabb3",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -385,8 +385,7 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany()
                         .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Users");
                 });
@@ -396,14 +395,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Categories", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Entities.Users", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Categories");
 
@@ -415,14 +412,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Products", "Products")
                         .WithMany("Transactions")
                         .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Products");
 

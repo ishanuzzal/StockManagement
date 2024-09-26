@@ -11,6 +11,6 @@ namespace DataAccess.unitOfWork
     {
         IUserRepository Users { get; }
         IProductRepository Products { get; }
-        int Complete();
+        Task<int> Complete();
     }
 }

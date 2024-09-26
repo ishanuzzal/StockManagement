@@ -25,9 +25,9 @@ namespace DataAccess.unitOfWork
             transactions = new TransactionRepository(_appDbContext);
             Users = new UserRepository(_appDbContext);
         }
-        public int Complete()
+        public Task<int> Complete()
         {
-            return _appDbContext.SaveChanges();
+            return _appDbContext.SaveChangesAsync();
         }
         public void Dispose()
         {

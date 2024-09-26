@@ -38,6 +38,6 @@ namespace DataAccess.Entities
         public string? ProductsId { get; set; }
 
         //[ForeignKey("ProductsId")]
-        public Products? Products { get; set; }
+        public Products Products { get; set; }
     }
 }

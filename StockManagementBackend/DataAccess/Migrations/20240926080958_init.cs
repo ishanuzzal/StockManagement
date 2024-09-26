@@ -167,9 +167,10 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -178,8 +179,7 @@ namespace DataAccess.Migrations
                         name: "FK_Categories_AspNetUsers_UsersId",
                         column: x => x.UsersId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -194,8 +194,8 @@ namespace DataAccess.Migrations
                     UnitType = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CategoriesId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CategoriesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -204,14 +204,12 @@ namespace DataAccess.Migrations
                         name: "FK_Products_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoriesId",
                         column: x => x.CategoriesId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -225,8 +223,8 @@ namespace DataAccess.Migrations
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
                     TransactionTypes = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductsId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProductsId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -235,14 +233,12 @@ namespace DataAccess.Migrations
                         name: "FK_Transactions_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Transactions_Products_ProductsId",
                         column: x => x.ProductsId,
                         principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -250,9 +246,9 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1a1f4c0b-450f-4b85-be59-4ec803524ac1", null, "admin", "ADMIN" },
-                    { "80c79ed9-22dd-4e25-a1fe-ebfb986a6e51", null, "user", "USER" },
-                    { "bdf7bd62-c3d5-4622-a6c5-69aafe675cdf", null, "manager", "MANAGER" }
+                    { "b0e86a5b-e3f1-473f-8778-1febb0a9455b", null, "manager", "MANAGER" },
+                    { "b7cb2f53-6291-4210-a742-0694ecaeabb3", null, "user", "USER" },
+                    { "f6fc55da-2834-4aee-a766-16cd401ee322", null, "admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

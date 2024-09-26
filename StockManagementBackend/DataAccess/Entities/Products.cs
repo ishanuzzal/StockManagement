@@ -46,7 +46,7 @@ namespace DataAccess.Entities
         //[ForeignKey("CategoriesId")]
         public Categories Categories { get; set; }
 
-        public ICollection<Transactions> Transactions { get; set; } = new List<Transactions>();
+        public ICollection<Transactions> Transactions { get; set; }
 
     }
 }

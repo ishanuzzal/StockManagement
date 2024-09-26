@@ -1,9 +1,13 @@
 ﻿using DataAccess.Entities;
+using DataAccess.Repositories;
 using DataAccess.Repositories.IRepositories;
 using DataAccess.unitOfWork;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using Service.dtos;
 using Service.Interfaces;
 using System;
@@ -21,38 +25,79 @@ namespace Service.services.AuthService
         private readonly IUserRepository _userRepository;
         private readonly SymmetricSecurityKey _key;
         private readonly UserManager<Users> _userManager;
-
-        public AuthService(IUnitOfWork unitOfWork, IConfiguration config, UserManager<Users> userManager,IUserRepository userRepository)
+        private readonly ILogger<AuthService> _logger;
+        public AuthService(
+            IUnitOfWork unitOfWork,
+            IConfiguration config,
+            UserManager<Users> userManager,
+            IUserRepository userRepository,
+            ILogger<AuthService> logger
+            )
         {
             _unitOfWork = unitOfWork;
             _config = config;
             _userManager = userManager;
             _userRepository = userRepository;
+            _logger = logger;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
+        }
+
+        public async Task<ApiResponse<string>> Registration(UseRegistrationDto useRegistrationDto)
+        {
+            var response = new ApiResponse<string>();   
+                    var appuser = new Users
+                    {
+                        UserName = useRegistrationDto.UserName,
+                        Email = useRegistrationDto.Email,
+                    };
+                    var createUser = await _userManager.CreateAsync(appuser, useRegistrationDto.Password);
+                    var addRole = await _userManager.AddToRoleAsync(appuser, useRegistrationDto.Role);
+
+                    if (createUser.Succeeded && addRole.Succeeded)
+                    {
+                      try
+                        {
+                        await _unitOfWork.Complete();
+
+                        }
+                      catch(Exception ex)
+                        {
+                            _logger.LogError(ex.Message);
+                            throw;
+                        }
+                        response.Success = true; response.Message = "User created";
+                        return response;
+                    }
+                response.Success = false;
+            return response;
         }
 
         public async Task<ApiResponse<VaidUserDto>> Login(UserLoginDto userLoginDto)
         {
             var response = new ApiResponse<VaidUserDto>();
-            var user = await _userRepository.GetAsync(
-            u => u.Email == userLoginDto.Email && u.PasswordHash == userLoginDto.Password);
-
-            if (user == null)
+            try
             {
-                response.Success = false;
-                return response;
+                var user = await _userRepository.GetAsync(
+                    u => u.Email == userLoginDto.Email && u.PasswordHash == userLoginDto.Password);
+
+                if (user == null)
+                {
+                    response.Success = false;
+                    response.Message = "Invalid UserName or Password";
+                    return response;
+                }
+
+                var role = await _userManager.GetRolesAsync(user);
+                response.Data.token = GenerateAccessToken(user.Email, user.UserName, role[0]);
+                response.Data.UserName = user.UserName;
+            }
+            catch (Exception ex) { 
+                _logger.LogError(ex.Message, ex);
+                throw;
             }
             
-            var role = await _userManager.GetRolesAsync(user);
-            response.Data.token = GenerateAccessToken(user.Email, user.UserName, role[0]);
-            response.Data.UserName = user.UserName;
 
             return response;
-        }
-
-        public Task<ApiResponse<string>> Registeration(UseRegistrationDto useRegistrationDto)
-        {
-            throw new NotImplementedException();
         }
 
         private string GenerateAccessToken(string Email, string UserName, string Role)
@@ -70,7 +115,7 @@ namespace Service.services.AuthService
             var tokenDescriptior = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claim),
-                Expires = DateTime.Now.AddMinutes(1),
+                Expires = DateTime.Now.AddMinutes(10),
                 SigningCredentials = creeds,
                 Issuer = _config["jwt:Issuer"],
                 Audience = _config["jwt:Audience"],

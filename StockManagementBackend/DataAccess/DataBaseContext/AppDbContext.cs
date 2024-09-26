@@ -63,13 +63,13 @@ namespace DataAccess.DataBaseContext
                 .HasOne(t => t.Users)
                 .WithMany(u => u.Transactions)
                 .HasForeignKey(t => t.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<Transactions>()
                 .HasOne(t => t.Products)
                 .WithMany(p => p.Transactions)
                 .HasForeignKey(t => t.ProductsId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
             
 
