@@ -46,17 +46,38 @@ namespace DataAccess.DataBaseContext
 
             builder.Entity<IdentityRole>().HasData(roles);
 
+
             builder.Entity<Products>()
-        .HasOne(p => p.User)
-        .WithMany(u => u.Products)
-        .HasForeignKey(p => p.UserId)
-        .OnDelete(DeleteBehavior.NoAction); 
+                .HasOne(p => p.User)
+                .WithMany(u => u.Products)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<Products>()
                 .HasOne(p => p.Categories)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoriesId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Transactions>()
+                .HasOne(t => t.Users)
+                .WithMany(u => u.Transactions)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Transactions>()
+                .HasOne(t => t.Products)
+                .WithMany(p => p.Transactions)
+                .HasForeignKey(t => t.ProductsId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            
+
+            builder.Entity<Categories>()
+                .HasOne(c => c.Users)
+                .WithMany()
+                .HasForeignKey(c => c.UsersId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

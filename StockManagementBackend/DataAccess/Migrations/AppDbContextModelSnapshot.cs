@@ -33,11 +33,14 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UsersId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -81,7 +84,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -124,7 +126,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -165,19 +166,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "40647995-54ee-46ec-82fc-e1621e849ec4",
+                            Id = "041e1ec4-2a6a-4a21-85ee-b346f4e2a32f",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "8f45d8bc-f03b-42dd-9108-ac721ccea092",
+                            Id = "5d423f73-e738-47d7-a631-70857de83bab",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "63409ed2-433d-403c-956b-7e45254c2253",
+                            Id = "60a802bd-e666-493f-9d61-f3bda2ee2a7c",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -381,8 +382,7 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany()
                         .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Users");
                 });
@@ -392,13 +392,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Categories", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccess.Entities.Users", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Categories");
 
@@ -409,13 +408,13 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("DataAccess.Entities.Products", "Products")
                         .WithMany("Transactions")
-                        .HasForeignKey("ProductsId");
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Products");
 

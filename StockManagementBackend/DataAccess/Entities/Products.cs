@@ -38,12 +38,12 @@ namespace DataAccess.Entities
         public DateTime? UpdatedAtUtc { get; set; }
         public string? UserId { get; set; }
 
-        [ForeignKey("UserId")]
+        //[ForeignKey("UserId")]
         public Users User { get; set; }
 
         public int? CategoriesId { get; set; }
 
-        [ForeignKey("CategoriesId")]
+        //[ForeignKey("CategoriesId")]
         public Categories Categories { get; set; }
 
         public ICollection<Transactions> Transactions { get; set; } = new List<Transactions>();

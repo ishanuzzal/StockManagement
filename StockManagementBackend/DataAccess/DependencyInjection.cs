@@ -12,6 +12,7 @@ using DataAccess.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
+using DataAccess.unitOfWork;
 
 namespace DataAccess
 {
@@ -29,7 +30,12 @@ namespace DataAccess
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
         }
     }
 }

@@ -9,18 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.UnitOfWork
+namespace DataAccess.unitOfWork
 {
-    public class UnitOfWork
+    public class UnitOfWork:IUnitOfWork
     {
         private readonly AppDbContext _appDbContext;
         public IProductRepository Products { get; set; }
         public ITransactionRepository transactions { get; }
 
+        public IUserRepository Users { get; set; }
+
         public UnitOfWork(AppDbContext appDbContext) {
             _appDbContext = appDbContext;
             Products = new ProductRepository(_appDbContext);
             transactions = new TransactionRepository(_appDbContext);
+            Users = new UserRepository(_appDbContext);
         }
         public int Complete()
         {

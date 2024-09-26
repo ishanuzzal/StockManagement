@@ -30,15 +30,14 @@ namespace DataAccess.Entities
         [Required]
         public DateTime DateTime { get; set; }
 
-        [Required]
         public string? UserId { get; set; }
 
-        [ForeignKey("UserId")]
+        //[ForeignKey("UserId")]
         public Users Users { get; set; }
 
         public string? ProductsId { get; set; }
 
-        [ForeignKey("ProductsId")]
+        //[ForeignKey("ProductsId")]
         public Products? Products { get; set; }
     }
 }

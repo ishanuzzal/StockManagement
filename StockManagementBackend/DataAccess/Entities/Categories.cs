@@ -22,7 +22,7 @@ namespace DataAccess.Entities
 
         public ICollection<Products> Products { get; set; }
 
-        public string UsersId { get; set; }
+        public string? UsersId { get; set; }
         [ForeignKey("UsersId")]
         public Users Users { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using DataAccess.DataBaseContext;
+using DataAccess.Entities;
 using DataAccess.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class ProductRepository:IProductRepository
+    public class ProductRepository: GenericRepository<Products>, IProductRepository
     {
         private readonly AppDbContext _context;
-        public ProductRepository(AppDbContext appDbContext) {
+        public ProductRepository(AppDbContext appDbContext):base(appDbContext) {
             _context = appDbContext;
         }  
     }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Service;
+using DataAccess;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +48,7 @@ builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.RegisterServiceLayerDependencies(builder.Configuration);
+builder.Services.RegisterDataAccessLayerDependencies(builder.Configuration);
 
 var app = builder.Build();
 
