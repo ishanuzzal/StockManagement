@@ -17,7 +17,8 @@ namespace Service
         {
             services.AddAutoMapper(typeof(AutoMapperProfile));
             services.AddScoped<IAuthService,AuthService>();
-
+            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IBussinessEntitiesService,BussinessEntitiesService>();
         }
     }
 }

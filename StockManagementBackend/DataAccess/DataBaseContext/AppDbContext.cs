@@ -19,6 +19,8 @@ namespace DataAccess.DataBaseContext
             public DbSet<Transactions> Transactions { get; set; }
             public DbSet<Categories> Categories { get; set; }
 
+            public DbSet<BussinessEntities> BussinessEntities { get; set; }
+
             protected override void OnModelCreating(ModelBuilder builder)
             {
             base.OnModelCreating(builder); 
@@ -71,7 +73,14 @@ namespace DataAccess.DataBaseContext
                 .HasForeignKey(t => t.ProductsId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            
+            builder.Entity<Transactions>()
+           .HasOne(t => t.BussinessEntities)
+           .WithMany(be => be.Transactions)
+           .HasForeignKey(t => t.BussinessEntitiesId)
+           .OnDelete(DeleteBehavior.NoAction);
+
+
+
 
             builder.Entity<Categories>()
                 .HasOne(c => c.Users)

@@ -63,10 +63,12 @@ namespace Service.services
                 {
                     response.Success = false;
                     response.Message = "No users found.";
+                    response.Data = new List<ShowUserDto>();    
                     return response;
                 }
                 response.Data = _mapper.Map<List<ShowUserDto>>(users);
                 response.Success = true;
+
             }
             catch (Exception ex)
             {
@@ -78,12 +80,12 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<bool>> RemoveUserAsync(string Id)
+        public async Task<ServiceResponse<bool>> RemoveUserAsync(ShowUserDto showUserDto)
         {
             var response = new ServiceResponse<bool>(); 
             try
             {
-                var user = await _userRepository.GetAsync(u => u.Id == Id);
+                var user = await _userRepository.GetAsync(u => u.Id == showUserDto.Id);
                 if (user == null)
                 {
                     response.Success = false;

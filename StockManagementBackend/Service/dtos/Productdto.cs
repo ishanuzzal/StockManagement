@@ -24,8 +24,8 @@ namespace Service.dtos
         public string UnitType { get; set; }
 
         [Required]
-        public int categoryId { get; set; }
-        public List<ShowCategoryDto> categories { get; set; }
+        public int CategoryId { get; set; }
+        public List<ShowCategoryDto> Categories { get; set; }
     }
 
     public class ShowProdcutDto

@@ -11,6 +11,13 @@ namespace DataAccess.Repositories.IRepositories
     {
         Task<T> GetAsync(Expression<Func<T, bool>> filter = null);
         Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter = null, CancellationToken cancellationToken = default);
+        Task<List<T>> GetListQueryAsync<TDto>(
+           TDto filterDto = null,
+           Expression<Func<T, bool>> filter = null,
+           Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+           int pageNumber = 1,
+           int pageSize = 10,
+           CancellationToken cancellationToken = default) where TDto : class;
         Task AddAsync(T entity);
         void UpdateAsync(T entity);
         void DeleteAsync(T entity);

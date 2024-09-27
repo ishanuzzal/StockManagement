@@ -14,6 +14,9 @@ namespace Service.Mappers
         public AutoMapperProfile() {
             CreateMap<Users,ShowUserDto>();
             CreateMap<Users, ShowUserDto>().ReverseMap();
+            CreateMap<BussinessEntities, ShowBussinessEntitiesDto>();
+            CreateMap<BussinessEntities,AddBussinessEntitiesDto>().ReverseMap();    
+           
         }
     }
 }

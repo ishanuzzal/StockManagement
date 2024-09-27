@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Service.dtos;
 using Service.Interfaces;
 
@@ -10,8 +13,8 @@ namespace WebApplication1.Controllers
     {
         private readonly IAuthService _auth;
         private readonly IUserService _userService;
-        private readonly Logger<UserController> _logger;
-        public UserController(IAuthService auth, Logger<UserController> logger,IUserService userService) {
+        private readonly ILogger<UserController> _logger;
+        public UserController(IAuthService auth, ILogger<UserController> logger,IUserService userService) {
             _auth = auth;
             _userService = userService;
             _logger = logger;
@@ -42,7 +45,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("getUser/{id}")]
-        public async Task<IActionResult> GetUser(string id)
+        public async Task<IActionResult> GetUser([FromRoute]string id)
         {
             var response = await  _userService.GetUserAsync(id);
             if (!response.Success) return NotFound(response.Message);

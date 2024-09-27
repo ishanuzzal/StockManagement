@@ -25,12 +25,14 @@ namespace Service.services
         private readonly IUserRepository _userRepository;
         private readonly SymmetricSecurityKey _key;
         private readonly UserManager<Users> _userManager;
+        private readonly SignInManager<Users> _signInManager;
         private readonly ILogger<AuthService> _logger;
         public AuthService(
             IUnitOfWork unitOfWork,
             IConfiguration config,
             UserManager<Users> userManager,
             IUserRepository userRepository,
+            SignInManager<Users> signInManager,
             ILogger<AuthService> logger
             )
         {
@@ -38,8 +40,9 @@ namespace Service.services
             _config = config;
             _userManager = userManager;
             _userRepository = userRepository;
+            _signInManager = signInManager;
             _logger = logger;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Signingkey"]));
         }
 
         public async Task<ServiceResponse<string>> Registration(UseRegistrationDto useRegistrationDto)
@@ -74,22 +77,30 @@ namespace Service.services
 
         public async Task<ServiceResponse<VaidUserDto>> Login(UserLoginDto userLoginDto)
         {
+            var responseDto = new VaidUserDto();
             var response = new ServiceResponse<VaidUserDto>();
             try
             {
                 var user = await _userRepository.GetAsync(
-                    u => u.Email == userLoginDto.Email && u.PasswordHash == userLoginDto.Password);
+                    u => u.Email == userLoginDto.Email);
 
                 if (user == null)
                 {
                     response.Success = false;
-                    response.Message = "Invalid UserName or Password";
+                    response.Message = "User Not found";
                     return response;
                 }
-
+                var result = await _signInManager.CheckPasswordSignInAsync(user, userLoginDto.Password, false);
+                if (!result.Succeeded) {
+                    response.Success = false;
+                    response.Message = "Incorrect UserName or Password";
+                    return response;
+                }
                 var role = await _userManager.GetRolesAsync(user);
-                response.Data.token = GenerateAccessToken(user.Email, user.UserName, role[0]);
-                response.Data.UserName = user.UserName;
+                responseDto.UserName = user.UserName;
+                responseDto.token = GenerateAccessToken(user.Id,user.Email, user.UserName, role[0]);
+                response.Success = true;
+                response.Data = responseDto;
             }
             catch (Exception ex)
             {
@@ -101,10 +112,11 @@ namespace Service.services
             return response;
         }
 
-        private string GenerateAccessToken(string Email, string UserName, string Role)
+        private string GenerateAccessToken(string Id,string Email, string UserName, string Role)
         {
             var claim = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, Id),
                  new Claim(ClaimTypes.Email, Email),
                  new Claim(ClaimTypes.Name,UserName),
                  new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -118,8 +130,8 @@ namespace Service.services
                 Subject = new ClaimsIdentity(claim),
                 Expires = DateTime.Now.AddMinutes(10),
                 SigningCredentials = creeds,
-                Issuer = _config["jwt:Issuer"],
-                Audience = _config["jwt:Audience"],
+                Issuer = _config["JWT:Issuer"],
+                Audience = _config["JWT:Audience"],
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

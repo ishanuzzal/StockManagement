@@ -22,6 +22,50 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DataAccess.Entities.BussinessEntities", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UsersId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("BussinessEntities");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.Categories", b =>
                 {
                     b.Property<int>("Id")
@@ -60,6 +104,10 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<double>("MinStockAmount")
                         .HasColumnType("float");
@@ -103,6 +151,9 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BussinessEntitiesId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
@@ -120,15 +171,12 @@ namespace DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("UnitType")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BussinessEntitiesId");
 
                     b.HasIndex("ProductsId");
 
@@ -166,19 +214,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6fc55da-2834-4aee-a766-16cd401ee322",
+                            Id = "39bcdb0a-cffb-4796-9b7f-ceac1da7f6b2",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b0e86a5b-e3f1-473f-8778-1febb0a9455b",
+                            Id = "ea91e2eb-d494-44dc-88ba-17f34fa2b476",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "b7cb2f53-6291-4210-a742-0694ecaeabb3",
+                            Id = "9a8a16f3-bf5b-49b8-97bf-46ad86373f6d",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -377,6 +425,17 @@ namespace DataAccess.Migrations
                     b.HasDiscriminator().HasValue("Users");
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.BussinessEntities", b =>
+                {
+                    b.HasOne("DataAccess.Entities.Users", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.Categories", b =>
                 {
                     b.HasOne("DataAccess.Entities.Users", "Users")
@@ -406,6 +465,12 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Entities.Transactions", b =>
                 {
+                    b.HasOne("DataAccess.Entities.BussinessEntities", "BussinessEntities")
+                        .WithMany("Transactions")
+                        .HasForeignKey("BussinessEntitiesId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("DataAccess.Entities.Products", "Products")
                         .WithMany("Transactions")
                         .HasForeignKey("ProductsId")
@@ -415,6 +480,8 @@ namespace DataAccess.Migrations
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("BussinessEntities");
 
                     b.Navigation("Products");
 
@@ -470,6 +537,11 @@ namespace DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.BussinessEntities", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Categories", b =>

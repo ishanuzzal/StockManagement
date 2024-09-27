@@ -16,10 +16,6 @@ namespace DataAccess.Entities
         [Range(0, double.MaxValue)] 
         public double Qty { get; set; }
 
-        [Required]
-        [MaxLength(20)]
-        public string? UnitType { get; set; }
-
         [Range(0, double.MaxValue)] 
         public double TotalPrice { get; set; }
 
@@ -39,5 +35,8 @@ namespace DataAccess.Entities
 
         //[ForeignKey("ProductsId")]
         public Products Products { get; set; }
+
+        public int BussinessEntitiesId { get; set; }
+        public BussinessEntities BussinessEntities { get; set; }
     }
 }

@@ -19,11 +19,14 @@ namespace DataAccess.Entities
         [MaxLength(100)]
         public string Name { get; set; }
 
+        [MaxLength(200)]
+        public string? Description { get; set; }
+
         [Range(0, double.MaxValue)] 
         public double StockAmount { get; set; }
 
-        [Range(0, double.MaxValue)] 
-        public double MinStockAmount { get; set; }
+        [Range(0, double.MaxValue)]
+        public double MinStockAmount { get; set; } = 0;
 
         [Range(0, double.MaxValue)] 
         public double UnitPrice { get; set; }

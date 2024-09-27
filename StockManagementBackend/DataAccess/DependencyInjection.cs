@@ -35,6 +35,8 @@ namespace DataAccess
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IBussinessEntitiesRepository, BussinessEntitiesRepository>();    
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         }
     }

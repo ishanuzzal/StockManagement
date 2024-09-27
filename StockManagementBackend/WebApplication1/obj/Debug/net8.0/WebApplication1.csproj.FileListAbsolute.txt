@@ -156,3 +156,4 @@ D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\ne
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Serilog.Sinks.File.dll
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Service.dll
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Service.pdb
+D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
