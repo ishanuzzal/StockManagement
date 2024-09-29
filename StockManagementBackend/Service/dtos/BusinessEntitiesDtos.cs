@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Service.dtos
 {
-    public class AddBussinessEntitiesDto
+    public class AddBusinessEntitiesDto
     {
         [Required]
         [MaxLength(100)]
@@ -23,7 +23,7 @@ namespace Service.dtos
         public string Type { get; set; }
     }
 
-    public class ShowBussinessEntitiesDto
+    public class ShowBusinessEntitiesDto
     {
         [Required]
         public int Id { get; set; }
@@ -38,5 +38,27 @@ namespace Service.dtos
         [Required]
         [MaxLength(20)]
         public string Type { get; set; }
+
+        public DateTime CreatedAtUtc { get; set; }
     }
+
+    public class UpdateBusinessEntitiesDto
+    {
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Name { get; set; }
+        [MaxLength(300)]
+        public string Address { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string Type { get; set; }
+
+    }
+
+
 }

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using DataAccess.dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace DataAccess.Repositories.IRepositories
 {
@@ -18,7 +20,11 @@ namespace DataAccess.Repositories.IRepositories
            int pageNumber = 1,
            int pageSize = 10,
            CancellationToken cancellationToken = default) where TDto : class;
-        Task AddAsync(T entity);
+
+        Task<PaginationDataReturnDto<T>> GetPaginatedItemsListAsync(
+                                                                    PaginationSortDto_DataAccess paginationSortDto,
+                                                                    Expression<Func<T, bool>> filter=null);
+        Task<T> AddAsync(T entity);
         void UpdateAsync(T entity);
         void DeleteAsync(T entity);
     }

@@ -87,6 +87,10 @@ namespace DataAccess.DataBaseContext
                 .WithMany()
                 .HasForeignKey(c => c.UsersId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<BussinessEntities>()
+           .Property(be => be.Type)
+           .HasConversion<string>();
         }
     }
 }

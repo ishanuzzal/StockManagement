@@ -9,14 +9,25 @@ using DataAccess;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using WebApplication1.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddCors(options => options.AddPolicy(name: "any", policy =>
+{
+    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+}));
+
 
 builder.Services.AddSwaggerGen(option =>
 {
@@ -46,6 +57,11 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
+builder.Services.RegisterServiceLayerDependencies(builder.Configuration);
+builder.Services.RegisterDataAccessLayerDependencies(builder.Configuration);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -69,14 +85,10 @@ builder.Services.AddAuthentication(options =>
         )
     };
 });
+builder.Services.AddAuthorization();
 
-builder.Host.UseSerilog((context, configuration) =>
-    configuration.ReadFrom.Configuration(context.Configuration));
-
-builder.Services.RegisterServiceLayerDependencies(builder.Configuration);
-builder.Services.RegisterDataAccessLayerDependencies(builder.Configuration);
-
-var app = builder.Build();
+builder.Services.AddTransient<GlobalExceptionHandling>();
+ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -84,10 +96,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("any");
 app.UseSerilogRequestLogging();
+app.UseMiddleware<GlobalExceptionHandling>();
+
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

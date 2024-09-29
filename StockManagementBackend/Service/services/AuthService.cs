@@ -98,7 +98,8 @@ namespace Service.services
                 }
                 var role = await _userManager.GetRolesAsync(user);
                 responseDto.UserName = user.UserName;
-                responseDto.token = GenerateAccessToken(user.Id,user.Email, user.UserName, role[0]);
+                string token = GenerateAccessToken(user.Id,user.Email, user.UserName, role[0]);
+                responseDto.token = token;
                 response.Success = true;
                 response.Data = responseDto;
             }

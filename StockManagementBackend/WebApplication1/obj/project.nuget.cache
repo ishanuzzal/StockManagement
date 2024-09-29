@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d96F8JnwtqduK30dkfb6hvSXhUKap47QX8H46OxjfBaLweLnQCv0zRv6l5NhXmebvM8pPPq9v5SGuCzlEQojVA==",
+  "dgSpecHash": "PdGxy3xclUeOpuGU9FXsEZYUnIMVYeTEktEiV0V/rLtYToXQOWMG3Zq2+b/1/3TbKIn23np8o/1fxOP45Sz2ZQ==",
   "success": true,
   "projectFilePath": "D:\\Onnorokom\\StockManagement\\StockManagementBackend\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
@@ -83,6 +83,7 @@
     "C:\\Users\\hp\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\system.linq.dynamic.core\\1.4.5\\system.linq.dynamic.core.1.4.5.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

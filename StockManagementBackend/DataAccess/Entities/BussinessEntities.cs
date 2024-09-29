@@ -1,4 +1,5 @@
-﻿using DataAccess.Interfaces;
+﻿using DataAccess.Enums;
+using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,8 +22,7 @@ namespace DataAccess.Entities
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [MaxLength(20)]
-        public string Type { get; set; }
+        public BusinessType Type { get; set; }
 
         [ForeignKey("UserId")]
         public string UsersId { get; set; }

@@ -1,0 +1,50 @@
+<main id="container">
+    <div class="text-center py-2 mb-2 border-bottom heading" style="background-color: E0F2F1">
+        <h1 class="text-center">Dashboard</h1>
+    </div>
+    <div class="container-fluid row gutters-tiny" data-toggle="appear">
+        <div class="col-lg-3 col-md-3 col-sm-12 px-1 mb-3">
+            <div class="card text-white bg-primary">
+                <div class="card-header"><i class="fa fa-user-plus"></i> View Partners</div>
+                <div class="card-body">
+                    <h3 class="card-title">10</h3>
+                </div>
+                <a class="card-footer text-right" href="{% url 'view_users' %}">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 px-1 mb-3">
+            <div class="card text-white bg-success">
+                <div class="card-header"> <i class="fas fa-shopping-cart"></i> View Products</div>
+                <div class="card-body">
+                    <h3 class="card-title"> 10</h3>
+                </div>
+                <a class="card-footer text-right" href="{% url 'pending_notes' %}">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 px-1 mb-3">
+            <div class="card text-white bg-warning">
+                <div class="card-header"><i class="fas fa-tasks"></i> View Categories</div>
+                <div class="card-body">
+                    <h3 class="card-title">10</h3>
+                </div>
+                <a class="card-footer text-right" href="{% url 'accepted_notes' %}">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 px-1 mb-3">
+            <div class="card text-white bg-danger">
+                <div class="card-header"><i class="fa fa-pie-chart"></i> All Transactions</div>
+                <div class="card-body">
+                    <h3 class="card-title">10</h3>
+                </div>
+                <a class="card-footer text-right" href="{% url 'rejected_notes' %}">
+                    More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>

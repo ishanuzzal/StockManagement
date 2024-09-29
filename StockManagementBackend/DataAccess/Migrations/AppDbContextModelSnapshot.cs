@@ -49,8 +49,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("datetime2");
@@ -214,19 +213,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "39bcdb0a-cffb-4796-9b7f-ceac1da7f6b2",
+                            Id = "4a35ad2c-baeb-4343-89cc-93a68042e557",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ea91e2eb-d494-44dc-88ba-17f34fa2b476",
+                            Id = "6f496e29-fc30-4916-8125-ac54454f2bac",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "9a8a16f3-bf5b-49b8-97bf-46ad86373f6d",
+                            Id = "7f4600d1-e20c-4965-9b5f-bc754d743e52",
                             Name = "user",
                             NormalizedName = "USER"
                         });

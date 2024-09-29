@@ -621,6 +621,14 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
+      "System.Linq.Dynamic.Core/1.4.5": {
+        "runtime": {
+          "lib/net8.0/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.4.5.0",
+            "fileVersion": "1.4.5.0"
+          }
+        }
+      },
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
@@ -740,7 +748,8 @@
           "Serilog.Extensions.Logging": "8.0.0",
           "Serilog.Settings.Configuration": "8.0.2",
           "Serilog.Sinks.Console": "6.0.0",
-          "Serilog.Sinks.File": "6.0.0"
+          "Serilog.Sinks.File": "6.0.0",
+          "System.Linq.Dynamic.Core": "1.4.5"
         },
         "runtime": {
           "DataAccess.dll": {}
@@ -1145,6 +1154,13 @@
       "sha512": "sha512-SxHB3nuNrpptVk+vZ/F+7OHEpoHUIKKMl02bUmYHQr1r+glbZQxs7pRtsf4ENO29TVm2TH3AEeep2fJcy92oYw==",
       "path": "system.io.filesystem.accesscontrol/5.0.0",
       "hashPath": "system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.4.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DArhXxeawjiGbMsYdc0oUvZIjDzcLqnwz+Us8A+wJhrOiz3EqCO8aFoYun2GokyaW2hipEJ33oxqnhU6UmaEJQ==",
+      "path": "system.linq.dynamic.core/1.4.5",
+      "hashPath": "system.linq.dynamic.core.1.4.5.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",

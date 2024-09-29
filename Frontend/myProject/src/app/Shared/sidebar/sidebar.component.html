@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="section">
+        <div class="top_navbar" (click)="ToogleSidebar()" [ngClass]="{'not_active': sidebarNotActive}">
+            <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+            </div>
+            
+        </div>
+        <div class="sidebar"  [ngClass]="{'hideSidebar': sidebarNotActive}">
+            <div class="profile">
+                <p>Admin</p>
+            </div>
+            <ul>
+                <li>
+                    <a routerLink="dashboard_content">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="products">Products</a>
+                </li>
+                <li>
+                          Categories
+                </li>
+                <li>
+                    <a routerLink="partners">Partners</a>
+                </li>
+                
+            </ul>
+        </div>
+
+    </div>

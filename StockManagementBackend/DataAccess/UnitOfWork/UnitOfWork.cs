@@ -29,6 +29,11 @@ namespace DataAccess.unitOfWork
         {
             return await _appDbContext.SaveChangesAsync();
         }
+
+        public TEntity GetTrackedEntity<TEntity>(TEntity entity) where TEntity : class
+        {
+            return _appDbContext.Entry(entity).Entity;
+        }
         public void Dispose()
         {
             _appDbContext?.Dispose();

@@ -12,4 +12,13 @@ namespace Service.dtos
         public string Message { get; set; } = string.Empty;
         public T? Data { get; set; }
     }
+
+    public class PaginatedServiceResponse<T>
+    {
+        public bool Success { get; set; }
+        public T? Data { get; set; }
+        public int? TotalItemDataBase { get; set; }
+
+        public int? TotalItemInList { get; set; }
+    }
 }

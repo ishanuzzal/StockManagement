@@ -1,28 +1,32 @@
 ﻿using AutoMapper;
 using DataAccess.Entities;
+using DataAccess.Enums;
 using DataAccess.Repositories;
 using DataAccess.Repositories.IRepositories;
 using DataAccess.unitOfWork;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Service.dtos;
+using shared;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using shared.dtos;
+using DataAccess.dtos;
 
 namespace Service.services
 {
-    public class BussinessEntitiesService : IBussinessEntitiesService
+    public class BusinessEntitiesService : IBusinessEntitiesService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBussinessEntitiesRepository _bussinessEntitiesRepository;
-        private readonly ILogger<BussinessEntitiesService> _logger;
+        private readonly ILogger<BusinessEntitiesService> _logger;
         private readonly IMapper _mapper;
 
-        public BussinessEntitiesService(IUnitOfWork unitOfWork, IBussinessEntitiesRepository bussinessEntitiesRepository, ILogger<BussinessEntitiesService> logger, IMapper mapper)
+        public BusinessEntitiesService(IUnitOfWork unitOfWork, IBussinessEntitiesRepository bussinessEntitiesRepository, ILogger<BusinessEntitiesService> logger, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _bussinessEntitiesRepository = bussinessEntitiesRepository;
@@ -30,24 +34,26 @@ namespace Service.services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<ShowBussinessEntitiesDto>> AddEntitiesAsync(AddBussinessEntitiesDto addentitiesDto,string id)
+        public async Task<ServiceResponse<ShowBusinessEntitiesDto>> AddEntitiesAsync(AddBusinessEntitiesDto addentitiesDto,string id)
         {
-            var response = new ServiceResponse<ShowBussinessEntitiesDto>();
+            var response = new ServiceResponse<ShowBusinessEntitiesDto>();
             try
             {
                 var HaveEntity = await _bussinessEntitiesRepository.GetAsync(e => e.Name == addentitiesDto.Name);
                 if(HaveEntity!=null) {
                     response.Success = false;
-                    response.Message = "This bussiness entity is already taken";
+                    response.Message = "This Business entity is already taken";
                     return response;
                 }
                 var entity = _mapper.Map<BussinessEntities>(addentitiesDto);
                 entity.UsersId = id;
-                await _bussinessEntitiesRepository.AddAsync(entity);
+                var addedEntity = await _bussinessEntitiesRepository.AddAsync(entity);
                 var change = await _unitOfWork.Complete();
                 if (change > 0)
                 {
                     response.Success = true;
+                    response.Message = "entities added";
+                    response.Data = _mapper.Map<ShowBusinessEntitiesDto>(addedEntity);
                     return response;
                 }
                 response.Success = false;
@@ -59,12 +65,39 @@ namespace Service.services
                 _logger.LogError(ex.Message); throw;
             }
             return response;
-
         }
 
-        public async Task<ServiceResponse<List<ShowBussinessEntitiesDto>>> GetAllEntitiesAsync(string UserType=null)
+        public async Task<PaginatedServiceResponse<List<ShowBusinessEntitiesDto>>> GetPaginatedServiceEntitesAsync(PaginationSortDto dto)
         {
-            var response = new ServiceResponse<List<ShowBussinessEntitiesDto>>();
+            var response = new PaginatedServiceResponse<List<ShowBusinessEntitiesDto>>();
+            try
+            {
+                var paginatedDto = _mapper.Map<PaginationSortDto_DataAccess>(dto);
+                var entities = await _bussinessEntitiesRepository.GetPaginatedItemsListAsync(paginatedDto);
+                if(entities==null || entities.Data.IsNullOrEmpty())
+                {
+                    response.Success = false;
+                    response.Data = new List<ShowBusinessEntitiesDto>();
+                    response.TotalItemInList = 0;
+                    response.TotalItemDataBase = entities?.TotalItemDataBase;
+                    return response;
+                }
+                response.Success = true;
+                response.Data = _mapper.Map<List<ShowBusinessEntitiesDto>>(entities.Data);
+                response.TotalItemInList = entities.Data?.Count ?? 0;
+                response.TotalItemDataBase = entities.TotalItemDataBase;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                response.Success = false;
+                throw;
+            }
+            return response;
+        }
+        public async Task<ServiceResponse<List<ShowBusinessEntitiesDto>>> GetAllEntitiesAsync(BusinessType? UserType = null)
+        {
+            var response = new ServiceResponse<List<ShowBusinessEntitiesDto>>();
 
             try
             {
@@ -75,10 +108,10 @@ namespace Service.services
                 {
                     response.Success = false;
                     response.Message = "No entitites found found.";
-                    response.Data = new List<ShowBussinessEntitiesDto>();
+                    response.Data = new List<ShowBusinessEntitiesDto>();
                     return response;
                 }
-                response.Data = _mapper.Map<List<ShowBussinessEntitiesDto>>(users);
+                response.Data = _mapper.Map<List<ShowBusinessEntitiesDto>>(users);
                 response.Success = true;
             }
             catch (Exception ex)
@@ -91,9 +124,9 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<ShowBussinessEntitiesDto>> GetEntitiesAsync(int id)
+        public async Task<ServiceResponse<ShowBusinessEntitiesDto>> GetEntitiesAsync(int id)
         {
-            var response = new ServiceResponse<ShowBussinessEntitiesDto>();
+            var response = new ServiceResponse<ShowBusinessEntitiesDto>();
             try
             {
                 var user = await _bussinessEntitiesRepository.GetAsync(u => u.Id == id);
@@ -104,7 +137,7 @@ namespace Service.services
                     return response;
                 }
                 response.Success = true;
-                response.Data = _mapper.Map<ShowBussinessEntitiesDto>(user);
+                response.Data = _mapper.Map<ShowBusinessEntitiesDto>(user);
 
             }
             catch (Exception ex)
@@ -114,12 +147,12 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<bool>> RemoveEntitiesAsync(ShowBussinessEntitiesDto BsEdto)
+        public async Task<ServiceResponse<bool>> RemoveEntitiesAsync(int id)
         {
             var response = new ServiceResponse<bool>();
             try
             {
-                var user = await _bussinessEntitiesRepository.GetAsync(u => u.Id == BsEdto.Id);
+                var user = await _bussinessEntitiesRepository.GetAsync(u => u.Id == id);
                 if (user == null)
                 {
                     response.Success = false;
@@ -143,9 +176,9 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<ShowBussinessEntitiesDto>> UpdateEntitiesAsync(ShowBussinessEntitiesDto showUserDto)
+        public async Task<ServiceResponse<ShowBusinessEntitiesDto>> UpdateEntitiesAsync(UpdateBusinessEntitiesDto showUserDto)
         {
-            var response = new ServiceResponse<ShowBussinessEntitiesDto>();
+            var response = new ServiceResponse<ShowBusinessEntitiesDto>();
 
             try
             {
@@ -161,13 +194,15 @@ namespace Service.services
                 _mapper.Map(showUserDto, user);
 
                 _bussinessEntitiesRepository.UpdateAsync(user);
-
+                
                 var change = await _unitOfWork.Complete();
 
                 response.Success = change > 0;
                 if (response.Success)
                 {
-                    response.Data = _mapper.Map<ShowBussinessEntitiesDto>(user);
+                    var updatedUser = await _bussinessEntitiesRepository.GetAsync(u=>u.Id == showUserDto.Id);   
+
+                    response.Data = _mapper.Map<ShowBusinessEntitiesDto>(updatedUser);
                     response.Message = "user updated successfully.";
                 }
                 else

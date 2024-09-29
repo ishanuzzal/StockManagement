@@ -1,7 +1,10 @@
 ﻿namespace WebApplication1.Response
 {
-    public class ApiResponse
+    public class PaginatedApiResponse<T>
     {
-        public int StatusCode { get; set; }
+        public T? Data { get; set; }
+        public int? TotalItemDataBase { get; set; }
+
+        public int? TotalItemInList { get; set; }
     }
 }
