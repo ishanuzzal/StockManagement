@@ -22,6 +22,10 @@ namespace Service.Mappers
             CreateMap<UpdateBusinessEntitiesDto, BussinessEntities>();
             CreateMap<PaginationSortDto, PaginationSortDto_DataAccess>();
 
+            CreateMap<AddCategoryDto, Categories>();
+            CreateMap<Categories, ShowCategoryDto>();
+            CreateMap<UpdateCategoryDto, Categories>();
+
         }
     }
 }

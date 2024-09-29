@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DataAccess.dtos;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using DataAccess.Repositories.IRepositories;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Service.dtos;
 using Service.Interfaces;
+using shared.dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,11 +45,12 @@ namespace Service.services
                 }
                 var entity = _mapper.Map<Categories>(categoryDto);
                 entity.UsersId = Id;
-                await _categoryRepository.AddAsync(entity);
+                var addedCategory = await _categoryRepository.AddAsync(entity);
                 var change = await _unitOfWork.Complete();
                 if (change > 0)
                 {
                     response.Success = true;
+                    response.Data = _mapper.Map<ShowCategoryDto>(addedCategory);
                     return response;
                 }
                 response.Success = false;
@@ -142,7 +145,37 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<ShowCategoryDto>> UpdateCategoryAsync(AddCategoryDto categoryDto)
+        public async Task<PaginatedServiceResponse<List<ShowCategoryDto>>> GetPaginatedCategoriesAsync(PaginationSortDto dto)
+        {
+                var response = new PaginatedServiceResponse<List<ShowCategoryDto>>();
+                try
+                {
+                    var paginatedDto = _mapper.Map<PaginationSortDto_DataAccess>(dto);
+                    var entities = await _categoryRepository.GetPaginatedItemsListAsync(paginatedDto);
+                    if (entities == null || entities.Data.IsNullOrEmpty())
+                    {
+                        response.Success = false;
+                        response.Data = new List<ShowCategoryDto>();
+                        response.TotalItemInList = 0;
+                        response.TotalItemDataBase = entities?.TotalItemDataBase;
+                        return response;
+                    }
+                    response.Success = true;
+                    response.Data = _mapper.Map<List<ShowCategoryDto>>(entities.Data);
+                    response.TotalItemInList = entities.Data?.Count ?? 0;
+                    response.TotalItemDataBase = entities.TotalItemDataBase;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                    response.Success = false;
+                    throw;
+                }
+                return response;
+            
+        }
+
+        public async Task<ServiceResponse<ShowCategoryDto>> UpdateCategoryAsync(UpdateCategoryDto categoryDto)
         {
             var response = new ServiceResponse<ShowCategoryDto>();
 
@@ -166,11 +199,13 @@ namespace Service.services
                 response.Success = change > 0;
                 if (response.Success)
                 {
-                    response.Data = _mapper.Map<ShowCategoryDto>(category);
+                    var updatedCategory = await _categoryRepository.GetAsync(p=>p.Id == categoryDto.Id);
+                    response.Data = _mapper.Map<ShowCategoryDto>(updatedCategory);
                     response.Message = "category updated successfully.";
                 }
                 else
                 {
+                    response.Success = false;
                     response.Message = "Update failed. No changes made.";
                 }
             }

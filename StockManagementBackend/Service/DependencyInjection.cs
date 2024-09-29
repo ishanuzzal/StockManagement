@@ -19,6 +19,7 @@ namespace Service
             services.AddScoped<IAuthService,AuthService>();
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IBusinessEntitiesService,BusinessEntitiesService>();
+            services.AddScoped<ICategoriesService,CategoriesService>();
         }
     }
 }

@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PartnersService } from '../../Services/partners.service';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableModule,MatTableDataSource } from '@angular/material/table';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,45 +11,38 @@ import { FormsModule, } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Router,ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Partner } from '../../Models/Partners';
-import { MatTableDataSource,MatTable } from '@angular/material/table';
 import { PageEvent,MatPaginatorModule } from '@angular/material/paginator';
 import { OnInit } from '@angular/core';
+import { CategoriesService } from '../../Services/categories.service';
 @Component({
-  selector: 'app-partners',
+  selector: 'app-categories',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,MatSortModule,MatFormFieldModule,MatInputModule,CommonModule,
     MatButtonModule,MatDatepickerModule,MatNativeDateModule,FormsModule,ReactiveFormsModule,
-    MatDialogModule,ReactiveFormsModule,FormsModule,MatPaginatorModule,MatTableModule
-
-  ],
-  templateUrl: './partners.component.html',
-  styleUrl: './partners.component.css'
+    MatDialogModule,ReactiveFormsModule,FormsModule,MatPaginatorModule,MatTableModule],
+  templateUrl: './categories.component.html',
+  styleUrl: './categories.component.css'
 })
-export class PartnersComponent implements OnInit {
+export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.LoadPartners(this.pageSize,this.pageNumber,this.sortBy,this.sortDirection)
     console.log(this.dataSource)
   }
 
-  partnerHttp = inject(PartnersService)
+  categoryHttp = inject(CategoriesService)
   toaster = inject(ToastrService)
   isFormVisible = false
   submitType = ""
   selectedPartner:any
-  PartnerForm = new FormGroup({
-    Name: new FormControl("",[Validators.required,Validators.maxLength(100)]),
-    Address: new FormControl("",[Validators.required,Validators.maxLength(300)]),
-    Email: new FormControl("",Validators.required),
-    Type: new FormControl("", Validators.required)
-
+  CategoriesForm = new FormGroup({
+    Name: new FormControl("",[Validators.required]),
   })
 
-  submitPartner(){
+  submitCategories(){
     if(this.submitType=="update"){
-      this.partnerHttp.UpdatePartners(this.selectedPartner.Id,this.PartnerForm.value)
+      this.categoryHttp.UpdatePartners(this.selectedPartner.Id,this.CategoriesForm.value)
       .subscribe({
         next: response=>{
           this.toaster.success("Success","updated")
@@ -60,17 +53,17 @@ export class PartnersComponent implements OnInit {
       })
     }
     else{
-      this.partnerHttp.AddPartners(this.PartnerForm.value)
+      this.categoryHttp.AddCategories(this.CategoriesForm.value)
       .subscribe({
         next: response=>{
           this.toaster.success("Success")
+          this.LoadPartners(this.pageSize,this.pageNumber,this.sortBy,this.sortDirection)
         },
         error: err=>{
           this.toaster.error("failed","something went wrong")
         }
       })
     }
-    this.LoadPartners(this.pageSize,this.pageNumber,this.sortBy,this.sortDirection)
     this.isFormVisible = false
     this.submitType = ""
   }
@@ -81,7 +74,7 @@ export class PartnersComponent implements OnInit {
   }
 
   totalRecords: number = 100; // Declare totalRecords here
-  displayedColumns: string[] = ['Name', 'Email', 'Address', 'Type', 'Date', 'Action'];
+  displayedColumns: string[] = ['Name','ProductCount', 'Action'];
   Partner!: Partner[];
   dataSource = new MatTableDataSource<Partner>(this.Partner);
   pageSize = 10
@@ -107,11 +100,16 @@ export class PartnersComponent implements OnInit {
     this.LoadPartners(this.pageSize,this.pageNumber,this.sortBy,this.sortDirection)
   }
 
- 
+  AddCategories(){
+    this.CategoriesForm.reset({
+      Name: '',           
+    });
+    this.toggleForm()
+  }
 
   LoadPartners(pageSize: number, pageIndex: number,sortBy:string,sortDirection:string) {
     console.log(sortBy)
-    this.partnerHttp.GetAllPartnersPaginated(pageSize, pageIndex + 1,sortBy,sortDirection).subscribe((response: any) => {
+    this.categoryHttp.GetAllPartnersPaginated(pageSize, pageIndex + 1,sortBy,sortDirection).subscribe((response: any) => {
       console.log(response)
       this.dataSource.data = response.Data as Partner[];  // Explicitly cast the data to Partner[]
       this.totalRecords = response.TotalItemInDatabase; 
@@ -120,16 +118,13 @@ export class PartnersComponent implements OnInit {
     });
   }
 
-  editPartner(id:number){
+  editCategory(id:number){
     this.selectedPartner = this.dataSource.data.find(partner => partner.Id === id);
     console.log(this.selectedPartner)
   if (this.selectedPartner) {
     // Set the form fields with the partner's data
-    this.PartnerForm.setValue({
+    this.CategoriesForm.setValue({
       Name: this.selectedPartner.Name,
-      Address: this.selectedPartner.Address,
-      Email: this.selectedPartner.Email,
-      Type: this.selectedPartner.Type
     });
     this.submitType = "update"
     // Toggle the form visibility to show the edit form
@@ -137,8 +132,8 @@ export class PartnersComponent implements OnInit {
   
   }
 
-  deletePartner(id:number){
-    this.partnerHttp.DeletePartner(id)
+  deleteCategory(id:number){
+    this.categoryHttp.DeletePartner(id)
     .subscribe({
       next: response=>{
         this.toaster.success("Success")
@@ -150,3 +145,4 @@ export class PartnersComponent implements OnInit {
     })
   }
 }
+

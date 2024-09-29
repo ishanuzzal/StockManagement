@@ -1,0 +1,72 @@
+<div class="container mt-2">
+    <h3>Categories</h3>
+    <button class="btn btn-primary" (click)="AddCategories()">
+      Add Categories
+    </button>
+  
+    <div *ngIf="isFormVisible" class="form-container mt-4">
+      <button class="close-btn" (click)="toggleForm()">&times;</button>
+  
+      <form [formGroup]="CategoriesForm"  (ngSubmit)="submitCategories()">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Category Name</label>
+          <input Type="text" id="Name" class="form-control" formControlName="Name" placeholder="Enter Partner's Name">
+          <div *ngIf="CategoriesForm.get('Name')?.invalid && CategoriesForm.get('Name')?.touched" class="text-danger">
+            Name is required
+          </div>
+        </div>
+        <div class="button-group">
+          <button Type="submit" class="btn btn-success" [disabled]="CategoriesForm.invalid">Save Changes</button>
+          <button Type="button" class="btn btn-secondary" (click)="toggleForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container all item my-5">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          
+          <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} </td> <!-- Make sure to use PascalCase -->
+          </ng-container>
+          
+          <ng-container matColumnDef="ProductCount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.ProductCount}} </td>
+          </ng-container>
+          
+          <!-- <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.CreatedAtUtc | date}} </td> 
+          </ng-container>
+           -->
+    
+          <!-- Action Column -->
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button color="primary" (click)="editCategory(element.Id)">Edit</button>
+              <button mat-button color="warn" (click)="deleteCategory(element.Id)">Delete</button>
+            </td>
+          </ng-container>
+    
+          <!-- Define Header and Row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+        </table>
+    
+        <!-- Paginator -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       [length]="totalRecords"
+                       [pageSize]="pageSize"
+                       [pageIndex]="pageNumber"
+                       (page)="changingPage($event)">
+        </mat-paginator>
+      </div>
+    
+    </div>
+</div>
+  

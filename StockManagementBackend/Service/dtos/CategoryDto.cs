@@ -12,14 +12,17 @@ namespace Service.dtos
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public int ProductCount { get; set; }
+        public int ProductCount { get; set; } = 0;
     }
 
     public class AddCategoryDto
     {
         [Required]
+        public string Name { get; set; }
+    }
+
+    public class UpdateCategoryDto {
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
     }
 }
