@@ -24,8 +24,29 @@ namespace Service.Mappers
 
             CreateMap<AddCategoryDto, Categories>();
             CreateMap<Categories, ShowCategoryDto>();
+            CreateMap<Categories, ShowCategoryDropdown>();
             CreateMap<UpdateCategoryDto, Categories>();
+            CreateMap<AddProductDto, Product>();
+            CreateMap<Product, ShowProductDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Categories.Name));
 
+            CreateMap<AddProductDto, BuyTransactionDto>()
+                .ForMember(dest => dest.BussinessEntitiesId, opt => opt.MapFrom(src => src.BusinessEntitiesId))
+                .ForMember(dest => dest.Qty, opt => opt.MapFrom(src => src.StockAmount))
+                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.UnitPrice * src.StockAmount));
+            CreateMap<Transactions, ShowTransactionDto>()
+                .ForMember(dest => dest.TransactionTypes, opt => opt.MapFrom(src => src.TransactionTypes.ToString()));
+
+            CreateMap<Product, SellTransactionDto>();
+
+            CreateMap<BuyTransactionDto, Transactions>();
+            CreateMap<SellProductDto, SellTransactionDto>()
+                .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.UnitPrice * src.Qty))
+                .ForMember(dest => dest.ProductsId, opt=>opt.MapFrom(src => src.Id));
+            CreateMap<SellTransactionDto, Transactions>();
+
+                
+                
         }
     }
 }

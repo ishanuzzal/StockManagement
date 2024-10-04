@@ -11,7 +11,7 @@ namespace Service.Interfaces
     public interface ICategoriesService
     {
         public Task<ServiceResponse<ShowCategoryDto>> GetCategoryAsync(int Id);
-        public Task<ServiceResponse<List<ShowCategoryDto>>> GetAllCategoriesAsync();
+        public Task<ServiceResponse<List<ShowCategoryDropdown>>> GetAllCategoriesAsync();
 
         public Task<PaginatedServiceResponse<List<ShowCategoryDto>>> GetPaginatedCategoriesAsync(PaginationSortDto dto);
 

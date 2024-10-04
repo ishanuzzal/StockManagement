@@ -1,0 +1,49 @@
+.container {
+  max-width: 900px;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.form-control {
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  border-color: #004085;
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+.needs-validation input:invalid,
+.needs-validation textarea:invalid,
+.needs-validation select:invalid {
+  border-color: #dc3545;
+}
+
+.needs-validation input:valid,
+.needs-validation textarea:valid,
+.needs-validation select:valid {
+  border-color: #28a745;
+}

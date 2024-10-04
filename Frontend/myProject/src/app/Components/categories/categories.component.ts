@@ -109,7 +109,7 @@ export class CategoriesComponent implements OnInit {
 
   LoadPartners(pageSize: number, pageIndex: number,sortBy:string,sortDirection:string) {
     console.log(sortBy)
-    this.categoryHttp.GetAllPartnersPaginated(pageSize, pageIndex + 1,sortBy,sortDirection).subscribe((response: any) => {
+    this.categoryHttp.GetAllCategoriesPaginated(pageSize, pageIndex + 1,sortBy,sortDirection).subscribe((response: any) => {
       console.log(response)
       this.dataSource.data = response.Data as Partner[];  // Explicitly cast the data to Partner[]
       this.totalRecords = response.TotalItemInDatabase; 

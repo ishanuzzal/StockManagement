@@ -40,7 +40,7 @@ namespace Service.services
             try
             {
                 var HaveEntity = await _bussinessEntitiesRepository.GetAsync(e => e.Name == addentitiesDto.Name);
-                if(HaveEntity!=null) {
+                if(HaveEntity!=null && HaveEntity.Type.ToString() == addentitiesDto.Type) {
                     response.Success = false;
                     response.Message = "This Business entity is already taken";
                     return response;

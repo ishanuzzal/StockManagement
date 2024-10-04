@@ -4,7 +4,7 @@
       Add Categories
     </button>
   
-    <div *ngIf="isFormVisible" class="form-container mt-4">
+    <div *ngIf="isFormVisible" class="form-container mt-4"> 
       <button class="close-btn" (click)="toggleForm()">&times;</button>
   
       <form [formGroup]="CategoriesForm"  (ngSubmit)="submitCategories()">

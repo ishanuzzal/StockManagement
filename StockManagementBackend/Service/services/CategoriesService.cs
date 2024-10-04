@@ -61,7 +61,7 @@ namespace Service.services
             {
                 _logger.LogError(ex.Message); throw;
             }
-            return response;
+            return response; 
         }
 
         public async Task<ServiceResponse<bool>> DeleteCateogryAsync(int id)
@@ -93,9 +93,9 @@ namespace Service.services
             return response;
         }
 
-        public async Task<ServiceResponse<List<ShowCategoryDto>>> GetAllCategoriesAsync()
+        public async Task<ServiceResponse<List<ShowCategoryDropdown>>> GetAllCategoriesAsync()
         {
-            var response = new ServiceResponse<List<ShowCategoryDto>>();
+            var response = new ServiceResponse<List<ShowCategoryDropdown>>();
             try
             {
                 var categories = await _categoryRepository.GetListAsync();
@@ -104,10 +104,10 @@ namespace Service.services
                 {
                     response.Success = false;
                     response.Message = "No entitites found found.";
-                    response.Data = new List<ShowCategoryDto>();
+                    response.Data = new List<ShowCategoryDropdown>();
                     return response;
                 }
-                response.Data = _mapper.Map<List<ShowCategoryDto>>(categories);
+                response.Data = _mapper.Map<List<ShowCategoryDropdown>>(categories);
                 response.Success = true;
             }
             catch (Exception ex)
@@ -219,5 +219,7 @@ namespace Service.services
 
             return response;
         }
+
+        
     }
 }

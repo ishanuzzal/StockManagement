@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.IRepositories
 {
-    public interface IProductRepository: IGenericRepository<Products>
+    public interface IProductRepository: IGenericRepository<Product>
     {
 
     }

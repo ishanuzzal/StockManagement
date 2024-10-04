@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Enums;
+using DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    public class Transactions
+    public class Transactions : ITimeAuditable
     {
         [Key]
         public int Id { get; set; }
@@ -20,23 +22,21 @@ namespace DataAccess.Entities
         public double TotalPrice { get; set; }
 
         [Required]
-        [MaxLength(20)] 
-        public string? TransactionTypes { get; set; }
-
-        [Required]
-        public DateTime DateTime { get; set; }
+        public TransactionType TransactionTypes { get; set; }
 
         public string? UserId { get; set; }
 
-        //[ForeignKey("UserId")]
         public Users Users { get; set; }
 
-        public string? ProductsId { get; set; }
+        public int ProductsId { get; set; }
 
-        //[ForeignKey("ProductsId")]
-        public Products Products { get; set; }
+        public Product Products { get; set; }
 
         public int BussinessEntitiesId { get; set; }
         public BussinessEntities BussinessEntities { get; set; }
+
+        public DateTime CreatedAtUtc { get; set; }
+
+        public DateTime? UpdatedAtUtc { get; set; }
     }
 }

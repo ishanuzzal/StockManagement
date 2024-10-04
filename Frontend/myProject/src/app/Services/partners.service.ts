@@ -26,6 +26,14 @@ export class PartnersService {
     )
   }
 
+  GetAllPartners(UserType:number){
+    return this.http.get(`${this.url}/getAllBusinessEntities`,{
+      params:{
+        UserType:UserType
+      }
+    })
+  }
+
   UpdatePartners(id:number,data:any){
     data.Id = id
     return this.http.put(`${this.url}/UpdateBusinessEntities`,data)

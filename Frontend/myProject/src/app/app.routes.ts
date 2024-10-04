@@ -6,6 +6,8 @@ import { authGuard } from './Guards/auth.guard';
 import { PartnersComponent } from './Components/partners/partners.component';
 import { DashboardContentComponent } from './Components/dashboard-content/dashboard-content.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
+import { AddProductComponent } from './Components/add-product/add-product.component';
+import { ShowAllProductComponent } from './Components/show-all-product/show-all-product.component';
 
 export const routes: Routes = [
     {
@@ -33,6 +35,14 @@ export const routes: Routes = [
             {
                 path: "categories",
                 component: CategoriesComponent
+            },
+            {
+                path: "Addproducts",
+                component: AddProductComponent
+            },
+            {
+                path: "ShowProducts",
+                component: ShowAllProductComponent
             },
             {
                 path: "",

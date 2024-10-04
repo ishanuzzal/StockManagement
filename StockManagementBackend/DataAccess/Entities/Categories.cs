@@ -20,7 +20,7 @@ namespace DataAccess.Entities
         public DateTime CreatedAtUtc { get; set; }
         public DateTime? UpdatedAtUtc { get; set; }
 
-        public ICollection<Products> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
 
         public string? UsersId { get; set; }
         [ForeignKey("UsersId")]

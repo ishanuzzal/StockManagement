@@ -14,5 +14,6 @@ namespace shared.dtos
         public string SortBy { get; set; } = string.Empty;
 
         public string SortOrder { get; set; }  = string.Empty;
+
     }
 }

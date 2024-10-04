@@ -93,12 +93,15 @@ namespace DataAccess.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Products", b =>
+            modelBuilder.Entity("DataAccess.Entities.Product", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<int?>("CategoriesId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -108,13 +111,14 @@ namespace DataAccess.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<double>("MinStockAmount")
-                        .HasColumnType("float");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SKU")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("StockAmount")
                         .HasColumnType("float");
@@ -131,11 +135,15 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriesId");
+
+                    b.HasIndex("SKU")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -153,11 +161,11 @@ namespace DataAccess.Migrations
                     b.Property<int>("BussinessEntitiesId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ProductsId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
 
                     b.Property<double>("Qty")
                         .HasColumnType("float");
@@ -165,10 +173,11 @@ namespace DataAccess.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
-                    b.Property<string>("TransactionTypes")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("TransactionTypes")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAtUtc")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -213,19 +222,19 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4a35ad2c-baeb-4343-89cc-93a68042e557",
+                            Id = "1",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "6f496e29-fc30-4916-8125-ac54454f2bac",
+                            Id = "2",
                             Name = "manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "7f4600d1-e20c-4965-9b5f-bc754d743e52",
+                            Id = "3",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -445,17 +454,19 @@ namespace DataAccess.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Products", b =>
+            modelBuilder.Entity("DataAccess.Entities.Product", b =>
                 {
                     b.HasOne("DataAccess.Entities.Categories", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("DataAccess.Entities.Users", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Categories");
 
@@ -470,10 +481,11 @@ namespace DataAccess.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("DataAccess.Entities.Products", "Products")
+                    b.HasOne("DataAccess.Entities.Product", "Products")
                         .WithMany("Transactions")
                         .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("DataAccess.Entities.Users", "Users")
                         .WithMany("Transactions")
@@ -548,7 +560,7 @@ namespace DataAccess.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Products", b =>
+            modelBuilder.Entity("DataAccess.Entities.Product", b =>
                 {
                     b.Navigation("Transactions");
                 });

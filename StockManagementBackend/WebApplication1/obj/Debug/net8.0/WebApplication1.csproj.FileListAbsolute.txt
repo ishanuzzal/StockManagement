@@ -158,3 +158,5 @@ D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\ne
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Service.pdb
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1\bin\Debug\net8.0\itextsharp.dll

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    public class Products : ITimeAuditable
+    public class Product : ITimeAuditable
     {
         [Key]
         [Required]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -22,11 +22,12 @@ namespace DataAccess.Entities
         [MaxLength(200)]
         public string? Description { get; set; }
 
+        [Required]
+        
+        public string SKU { get; set; }
+
         [Range(0, double.MaxValue)] 
         public double StockAmount { get; set; }
-
-        [Range(0, double.MaxValue)]
-        public double MinStockAmount { get; set; } = 0;
 
         [Range(0, double.MaxValue)] 
         public double UnitPrice { get; set; }
@@ -39,12 +40,12 @@ namespace DataAccess.Entities
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
 
         //[ForeignKey("UserId")]
         public Users User { get; set; }
 
-        public int? CategoriesId { get; set; }
+        public int CategoriesId { get; set; }
 
         //[ForeignKey("CategoriesId")]
         public Categories Categories { get; set; }

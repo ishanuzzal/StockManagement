@@ -13,7 +13,7 @@ export class CategoriesService {
     return this.http.post(`${this.url}/AddCategories`,data)
   }
 
-  GetAllPartnersPaginated(PageSize:number,PageNumber:number,SortBy:string,SortOrder:string){
+  GetAllCategoriesPaginated(PageSize:number,PageNumber:number,SortBy:string,SortOrder:string){
     return this.http.get(`${this.url}/ShowAllCategories`,
       {
         params: {
@@ -24,6 +24,10 @@ export class CategoriesService {
         }
       }
     )
+  }
+
+  GetAllCategories(){
+    return this.http.get(`${this.url}/GetAllCategories`)
   }
 
   UpdatePartners(id:number,data:any){

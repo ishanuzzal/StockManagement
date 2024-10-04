@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,12 +20,40 @@ namespace Service.dtos
 
     }
 
-    public class AddTransactionDto
+    public class SellTransactionDto
     {
+        [Required]
         public double Qty { get; set; }
-        public string? UnitType { get; set; }
+
+        [Required]
         public double TotalPrice { get; set; }
-        public string? TransactionTypes { get; set; }
-        public DateTime DateTime { get; set; }
+        [Required]
+        public TransactionType TransactionTypes { get; set; } = TransactionType.Sell;
+        [Required]
+        public string UserId { get; set; }
+
+        [Required]
+        public int ProductsId { get; set; }
+
+        [Required]
+        public int BussinessEntitiesId { get; set; }
+    }
+
+    public class BuyTransactionDto
+    {
+        [Required]
+        public double Qty { get; set; }
+
+        [Required]
+        public double TotalPrice { get; set; }
+        [Required]
+        public TransactionType TransactionTypes { get; set; } = TransactionType.Buy;
+        [Required]
+        public string UserId { get; set; }
+        [Required]
+        public int CategoriesId { get; set; }
+
+        [Required]
+        public int BussinessEntitiesId { get; set; }
     }
 }

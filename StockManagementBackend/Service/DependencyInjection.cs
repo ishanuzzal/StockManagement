@@ -20,6 +20,10 @@ namespace Service
             services.AddScoped<IUserService,UserService>();
             services.AddScoped<IBusinessEntitiesService,BusinessEntitiesService>();
             services.AddScoped<ICategoriesService,CategoriesService>();
+            services.AddScoped<ITransactionService,TransactionService>();
+            services.AddScoped<IProductService,ProductService>();
+            
+           
         }
     }
 }

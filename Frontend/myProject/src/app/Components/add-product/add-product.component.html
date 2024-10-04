@@ -1,0 +1,72 @@
+<div class="container mt-1">
+  <h2 class="text-center mb-1">Add New Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" class="form-control" placeholder="Enter product name">
+        <div *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)" class="invalid-feedback d-block">
+          Name is required.
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="sku">SKU</label>
+        <input id="sku" formControlName="sku" type="text" class="form-control" placeholder="[type]-[number]">
+        <div *ngIf="productForm.get('sku')?.invalid && (productForm.get('sku')?.dirty || productForm.get('sku')?.touched)" class="invalid-feedback d-block">
+          SKU is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="stockAmount">Stock Amount</label>
+        <input id="stockAmount" formControlName="stockAmount" type="number" class="form-control" placeholder="Enter stock amount">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="unitPrice">Unit Price</label>
+        <input id="unitPrice" formControlName="unitPrice" type="number" class="form-control" placeholder="Enter unit price">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="unitType">Unit Type</label>
+        <input id="unitType" formControlName="unitType" type="text" class="form-control" placeholder="Enter unit type">
+      </div>
+    </div>
+
+    <!-- Updated Category Dropdown -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="categoriesName">Category</label>
+        <select id="categoriesName" formControlName="categoriesId" class="form-control" required>
+          <option value="">Select a category</option>
+          <option *ngFor="let category of categories" [value]="category.Id">{{ category.Name }}</option>
+        </select>
+        <div *ngIf="productForm.get('categoriesName')?.invalid && (productForm.get('categoriesName')?.dirty || productForm.get('categoriesName')?.touched)" class="invalid-feedback d-block">
+          Category is required.
+        </div>
+      </div>
+
+      <!-- Updated Business Entity Dropdown -->
+      <div class="form-group col-md-6">
+        <label for="businessEntitiesName">Business Entity</label>
+        <select id="businessEntitiesName" formControlName="businessEntitiesId" class="form-control" required>
+          <option value="">Select a business entity</option>
+          <option *ngFor="let entity of businessEntities" [value]="entity.Id">{{ entity.Name }}</option>
+        </select>
+        <div *ngIf="productForm.get('businessEntitiesName')?.invalid && (productForm.get('businessEntitiesName')?.dirty || productForm.get('businessEntitiesName')?.touched)" class="invalid-feedback d-block">
+          Business entity is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg" [disabled]="!productForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

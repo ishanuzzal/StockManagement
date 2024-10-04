@@ -21,7 +21,6 @@ import { OnInit } from '@angular/core';
   imports: [ReactiveFormsModule,CommonModule,MatSortModule,MatFormFieldModule,MatInputModule,CommonModule,
     MatButtonModule,MatDatepickerModule,MatNativeDateModule,FormsModule,ReactiveFormsModule,
     MatDialogModule,ReactiveFormsModule,FormsModule,MatPaginatorModule,MatTableModule
-
   ],
   templateUrl: './partners.component.html',
   styleUrl: './partners.component.css'
