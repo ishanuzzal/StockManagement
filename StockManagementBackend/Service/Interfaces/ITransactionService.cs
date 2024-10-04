@@ -10,8 +10,8 @@ namespace Service.Interfaces
 {
     public interface ITransactionService
     {
-        public Task<ServiceResponse<bool>> BuyProduct(AddProductDto addProductDto, string id);
-        public Task<ServiceResponse<bool>> SellProduct(SellProductDto sellProductDto, string id);
+        public Task<ServiceResponse<byte[]>> BuyProduct(AddProductDto addProductDto, string id);
+        public Task<ServiceResponse<byte[]>> SellProduct(SellProductDto sellProductDto, string id);
 
         public Task<PaginatedServiceResponse<List<ShowTransactionDto>>> ShowTransactionPaginatedDto(PaginationSortDto paginationSortDto); 
     }

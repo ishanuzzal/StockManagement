@@ -41,7 +41,9 @@ namespace WebApplication1.Controllers
 
             var response = await _transactionService.BuyProduct(addProductDto,ValidUserId);
             if (!response.Success) return BadRequest(response.Message);
-            return Ok(response.Data);
+            var content = response.Data;
+            var fileName = $"ProductBuyReport_{DateTime.UtcNow:yyyyMMdd}.pdf";
+            return File(content, "application/pdf", fileName);
         }
 
         [HttpPost("SellProduct")]
@@ -57,7 +59,9 @@ namespace WebApplication1.Controllers
             if (string.IsNullOrEmpty(ValidUserId)) return Unauthorized();
             var response = await _transactionService.SellProduct(sellProductDto, ValidUserId);
             if (!response.Success) return BadRequest(response.Message);
-            return Ok(response.Data);
+            var content = response.Data;
+            var fileName = $"ProductSellReport_{DateTime.UtcNow:yyyyMMdd}.pdf";
+            return File(content, "application/pdf", fileName);
         }
 
         [HttpGet("ShowAllProduct")]

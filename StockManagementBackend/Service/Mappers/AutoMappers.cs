@@ -40,11 +40,12 @@ namespace Service.Mappers
             CreateMap<Product, SellTransactionDto>();
 
             CreateMap<BuyTransactionDto, Transactions>();
+            CreateMap<Transactions, PrintBuyTransaction>(); 
             CreateMap<SellProductDto, SellTransactionDto>()
                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.UnitPrice * src.Qty))
                 .ForMember(dest => dest.ProductsId, opt=>opt.MapFrom(src => src.Id));
             CreateMap<SellTransactionDto, Transactions>();
-
+            CreateMap<Transactions,PrintSellTransaction>();
                 
                 
         }

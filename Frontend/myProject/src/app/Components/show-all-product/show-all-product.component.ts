@@ -113,6 +113,10 @@ export class ShowAllProductComponent implements OnInit {
   deleteProduct(id: number) {
     console.log(id);
   }
+  
+  SellProduct(id: number){
+    console.log(id);
+  }
 
   InventoryStatus(){
     this.productHttp.DownLoadInventoryReport().subscribe((response:any)=>{

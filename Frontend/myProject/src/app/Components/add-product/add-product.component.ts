@@ -5,7 +5,8 @@ import { PartnersService } from '../../Services/partners.service';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../Services/product.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 @Component({
   selector: 'app-add-product',
   standalone: true,
@@ -22,7 +23,8 @@ export class AddProductComponent {
   private fb = inject(FormBuilder);
   categories: categories[] = [];
   businessEntities: any[] = [];
-
+  private dialog = inject(MatDialog);
+  private reportBlob: Blob | null = null; 
   ngOnInit(): void {
     this.initForm();
     this.loadCategories();
@@ -74,13 +76,44 @@ export class AddProductComponent {
       this.productService.AddProduct(formData).subscribe({
         next:(res:any)=>{
           console.log(res)
+          this.reportBlob = res;
           this.toaster.success("Success")
+          this.popUpComponent();
         },
         error:(err:any)=>{
           console.log(err)
         }
       })
       // Here you would typically call a service to save the product
+    }
+  }
+  popUpComponent(): void {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      width: '400px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.action === 'generate') {
+        this.generateSalesReport();
+      } else {
+        console.log('Report generation cancelled');
+      }
+    });
+  }
+
+  generateSalesReport(): void {
+    // Implement the logic for generating a PDF report
+    if (this.reportBlob) {
+      const url = window.URL.createObjectURL(this.reportBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `ProductBuyReport_${new Date().toISOString()}.pdf`;
+      link.click();
+      window.URL.revokeObjectURL(url); // Clean up URL after download
+    } else {
+      console.error('No report available to download.');
+      this.toaster.error('No report available to download.');
     }
   }
 }

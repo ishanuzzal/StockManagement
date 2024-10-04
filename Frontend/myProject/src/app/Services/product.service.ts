@@ -20,7 +20,7 @@ export class ProductService {
   }
 
   AddProduct(data:any){
-    return this.http.post(`${this.url}/BuyProduct`,data)
+    return this.http.post(`${this.url}/BuyProduct`, data, { responseType: 'blob' });
   }
 
   SearchProduct(SKU:string,pageSize:number,pageIndex:number,sortBy:string,sortDirection:string){

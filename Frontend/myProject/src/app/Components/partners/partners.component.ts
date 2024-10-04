@@ -61,6 +61,8 @@ export class PartnersComponent implements OnInit {
       .subscribe({
         next: response=>{
           this.toaster.success("Success")
+          this.LoadPartners(this.pageSize,this.pageNumber,this.sortBy,this.sortDirection)
+          this.submitType = ""
         },
         error: err=>{
           this.toaster.error("failed","something went wrong")
@@ -111,7 +113,7 @@ export class PartnersComponent implements OnInit {
       Email: '',     
       Type: ''       
     });
-    this.toggleForm()
+    this.isFormVisible = true
   }
 
   LoadPartners(pageSize: number, pageIndex: number,sortBy:string,sortDirection:string) {

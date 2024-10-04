@@ -56,4 +56,36 @@ namespace Service.dtos
         [Required]
         public int BussinessEntitiesId { get; set; }
     }
+
+    public class PrintBuyTransaction
+    {
+        [Required]
+        public string ProductName { get; set; }
+        [Required]
+        public double Qty { get; set; }
+
+        [Required]
+        public double TotalPrice { get; set; }
+        [Required]
+        public TransactionType TransactionTypes { get; set; } = TransactionType.Buy;
+        [Required]
+        public string Buyer {  get; set; }
+      
+    }
+
+    public class PrintSellTransaction
+    {
+        [Required]
+        public string ProductName { get; set; }
+        [Required]
+        public double Qty { get; set; }
+
+        [Required]
+        public double TotalPrice { get; set; }
+        [Required]
+        public TransactionType TransactionTypes { get; set; } = TransactionType.Sell;
+        [Required]
+        public string Seller { get; set; }
+
+    }
 }

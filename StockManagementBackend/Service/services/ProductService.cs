@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using DataAccess.unitOfWork;
 
 namespace Service.services
 {
@@ -24,13 +25,19 @@ namespace Service.services
         private readonly ITransactionRepository _transactionRepository;
         private readonly ILogger<ProductService> _logger;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepository, ITransactionRepository transactionRepository, ILogger<ProductService> logger, IMapper mapper)
+        public ProductService(IProductRepository productRepository,
+            ITransactionRepository transactionRepository,
+            ILogger<ProductService> logger, IMapper mapper,
+            IUnitOfWork unitOfWork
+            )
         {
             _productRepository = productRepository;
             _transactionRepository = transactionRepository;
             _logger = logger;
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
        public async Task<ServiceResponse<ShowProductDto>> AddProductAsync(AddProductDto productDto, string Id)
@@ -42,10 +49,12 @@ namespace Service.services
                 var entity = _mapper.Map<Product>(productDto);
                 entity.UserId = Id;
                 var addedCategory = await _productRepository.AddAsync(entity);
+                _unitOfWork.Complete();
                 if (addedCategory!=null)
                 {
                     response.Success = true;
                     response.Data = _mapper.Map<ShowProductDto>(addedCategory);
+
                     return response;
                 }
                 response.Success = false;
@@ -102,12 +111,6 @@ namespace Service.services
             return response;
         }
 
-
-
-        public Task<PaginatedServiceResponse<List<ShowProductDto>>> GetPaginatedProductAsync(PaginationSortDto dto, string sku)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<ServiceResponse<ShowProductDto>> GetProductAsync(int Id)
         {
