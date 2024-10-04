@@ -6146,3 +6146,491 @@ WHERE [p].[Id] = @__HaveEntity_Id_0
 2024-10-05 01:54:27.339 +06:00 [DBG] Connection id "0HN74LJV7NTVF" sending FIN because: "The Socket transport's send loop completed gracefully."
 2024-10-05 01:54:27.340 +06:00 [DBG] The connection queue processing loop for 0HN74LJV7NTVF completed.
 2024-10-05 01:54:27.341 +06:00 [DBG] Connection id "0HN74LJV7NTVF" stopped.
+2024-10-05 01:57:52.104 +06:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-05 01:57:52.175 +06:00 [DBG] Hosting starting
+2024-10-05 01:57:52.189 +06:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-05 01:57:52.197 +06:00 [DBG] Reading data from file 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys\key-c249bede-42cd-4bf1-9c3e-e47a25d3d81a.xml'.
+2024-10-05 01:57:52.202 +06:00 [DBG] Reading data from file 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys\key-f377ebe4-626c-42ed-a84b-d009da5b7c50.xml'.
+2024-10-05 01:57:52.204 +06:00 [DBG] Reading data from file 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys\key-fab2180f-accc-4bf3-a9a0-7f84b0e647ca.xml'.
+2024-10-05 01:57:52.208 +06:00 [DBG] Found key {c249bede-42cd-4bf1-9c3e-e47a25d3d81a}.
+2024-10-05 01:57:52.211 +06:00 [DBG] Found key {f377ebe4-626c-42ed-a84b-d009da5b7c50}.
+2024-10-05 01:57:52.212 +06:00 [DBG] Found key {fab2180f-accc-4bf3-a9a0-7f84b0e647ca}.
+2024-10-05 01:57:52.216 +06:00 [DBG] Considering key {fab2180f-accc-4bf3-a9a0-7f84b0e647ca} with expiration date 2024-11-07 13:50:30Z as default key.
+2024-10-05 01:57:52.219 +06:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-05 01:57:52.221 +06:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-05 01:57:52.222 +06:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-05 01:57:52.225 +06:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-05 01:57:52.228 +06:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-05 01:57:52.231 +06:00 [DBG] Using key {fab2180f-accc-4bf3-a9a0-7f84b0e647ca} as the default key.
+2024-10-05 01:57:52.234 +06:00 [DBG] Key ring with default key {fab2180f-accc-4bf3-a9a0-7f84b0e647ca} was loaded during application startup.
+2024-10-05 01:57:52.325 +06:00 [INF] Now listening on: https://localhost:7028
+2024-10-05 01:57:52.328 +06:00 [INF] Now listening on: http://localhost:5145
+2024-10-05 01:57:52.330 +06:00 [DBG] Loaded hosting startup assembly WebApplication1
+2024-10-05 01:57:52.330 +06:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-05 01:57:52.331 +06:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-05 01:57:52.331 +06:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-05 01:57:52.332 +06:00 [INF] Hosting environment: Development
+2024-10-05 01:57:52.332 +06:00 [INF] Content root path: D:\Onnorokom\StockManagement\StockManagementBackend\WebApplication1
+2024-10-05 01:57:52.333 +06:00 [DBG] Hosting started
+2024-10-05 01:57:52.676 +06:00 [DBG] Connection id "0HN74LRAE2V54" accepted.
+2024-10-05 01:57:52.676 +06:00 [DBG] Connection id "0HN74LRAE2V53" accepted.
+2024-10-05 01:57:52.679 +06:00 [DBG] Connection id "0HN74LRAE2V54" started.
+2024-10-05 01:57:52.680 +06:00 [DBG] Connection id "0HN74LRAE2V53" started.
+2024-10-05 01:57:52.684 +06:00 [DBG] Connection id "0HN74LRAE2V54" received FIN.
+2024-10-05 01:57:52.684 +06:00 [DBG] Connection id "0HN74LRAE2V53" received FIN.
+2024-10-05 01:57:52.692 +06:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-10-05 01:57:52.692 +06:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-10-05 01:57:52.704 +06:00 [DBG] Connection id "0HN74LRAE2V54" stopped.
+2024-10-05 01:57:52.704 +06:00 [DBG] Connection id "0HN74LRAE2V53" stopped.
+2024-10-05 01:57:52.707 +06:00 [DBG] Connection id "0HN74LRAE2V54" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 01:57:52.707 +06:00 [DBG] Connection id "0HN74LRAE2V53" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 01:57:52.794 +06:00 [DBG] Connection id "0HN74LRAE2V55" accepted.
+2024-10-05 01:57:52.797 +06:00 [DBG] Connection id "0HN74LRAE2V55" started.
+2024-10-05 01:57:52.840 +06:00 [DBG] Connection 0HN74LRAE2V55 established using the following protocol: "Tls12"
+2024-10-05 01:57:52.882 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/swagger/index.html - null null
+2024-10-05 01:57:52.957 +06:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-05 01:57:52.976 +06:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-05 01:57:52.980 +06:00 [DBG] Request did not match any endpoints
+2024-10-05 01:57:53.088 +06:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-05 01:57:53.107 +06:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-05 01:57:53.112 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/swagger/index.html - 200 null text/html;charset=utf-8 231.4646ms
+2024-10-05 01:57:53.133 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2024-10-05 01:57:53.133 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-05 01:57:53.143 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 9.8855ms
+2024-10-05 01:57:53.176 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.4495ms
+2024-10-05 01:57:53.766 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/swagger/v1/swagger.json - null null
+2024-10-05 01:57:53.769 +06:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-05 01:57:53.770 +06:00 [DBG] Request did not match any endpoints
+2024-10-05 01:57:53.922 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 155.9241ms
+2024-10-05 01:57:54.407 +06:00 [DBG] Connection id "0HN74LRAE2V56" accepted.
+2024-10-05 01:57:54.409 +06:00 [DBG] Connection id "0HN74LRAE2V56" started.
+2024-10-05 01:57:54.418 +06:00 [DBG] Connection 0HN74LRAE2V56 established using the following protocol: "Tls12"
+2024-10-05 01:57:54.420 +06:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - null null
+2024-10-05 01:57:54.429 +06:00 [DBG] 1 candidate(s) found for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:57:54.431 +06:00 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2024-10-05 01:57:54.434 +06:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-05 01:57:54.436 +06:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2024-10-05 01:57:54.438 +06:00 [INF] CORS policy execution successful.
+2024-10-05 01:57:54.439 +06:00 [DBG] The request is a preflight request.
+2024-10-05 01:57:54.440 +06:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - 204 null null 20.0039ms
+2024-10-05 01:57:54.443 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - null null
+2024-10-05 01:57:54.447 +06:00 [DBG] 1 candidate(s) found for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:57:54.450 +06:00 [DBG] Endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)' with route pattern 'api/Product/ShowAllProduct' is valid for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:57:54.451 +06:00 [DBG] Request matched endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:57:54.454 +06:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-05 01:57:54.456 +06:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2024-10-05 01:57:54.457 +06:00 [INF] CORS policy execution successful.
+2024-10-05 01:57:54.539 +06:00 [DBG] Successfully validated the token.
+2024-10-05 01:57:54.541 +06:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-10-05 01:57:54.544 +06:00 [INF] Executing endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:57:54.566 +06:00 [INF] Route matched with {action = "ShowAllPaginatedProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ShowAllPaginatedProduct(shared.dtos.PaginationSortDto) on controller WebApplication1.Controllers.ProductController (WebApplication1).
+2024-10-05 01:57:54.568 +06:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-10-05 01:57:54.569 +06:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-05 01:57:54.571 +06:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648)","Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-05 01:57:54.573 +06:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-05 01:57:54.574 +06:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-05 01:57:54.576 +06:00 [DBG] Executing controller factory for controller WebApplication1.Controllers.ProductController (WebApplication1)
+2024-10-05 01:57:54.649 +06:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2024-10-05 01:57:54.745 +06:00 [DBG] Executed controller factory for controller WebApplication1.Controllers.ProductController (WebApplication1)
+2024-10-05 01:57:54.754 +06:00 [DBG] Attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' ...
+2024-10-05 01:57:54.756 +06:00 [DBG] Attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' using the name '' in request data ...
+2024-10-05 01:57:54.760 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.PageSize' of type 'System.Int32' using the name 'PageSize' in request data ...
+2024-10-05 01:57:54.762 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.PageSize' of type 'System.Int32'.
+2024-10-05 01:57:54.764 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.PageNumber' of type 'System.Int32' using the name 'PageNumber' in request data ...
+2024-10-05 01:57:54.765 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.PageNumber' of type 'System.Int32'.
+2024-10-05 01:57:54.766 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.SortBy' of type 'System.String' using the name 'SortBy' in request data ...
+2024-10-05 01:57:54.767 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.SortBy' of type 'System.String'.
+2024-10-05 01:57:54.768 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.SortOrder' of type 'System.String' using the name 'SortOrder' in request data ...
+2024-10-05 01:57:54.769 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.SortOrder' of type 'System.String'.
+2024-10-05 01:57:54.770 +06:00 [DBG] Done attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:57:54.771 +06:00 [DBG] Done attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:57:54.772 +06:00 [DBG] Attempting to validate the bound parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' ...
+2024-10-05 01:57:54.776 +06:00 [DBG] Done attempting to validate the bound parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:57:55.202 +06:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserRole<string>' as the properties are already covered by the index {'UserId', 'RoleId'}.
+2024-10-05 01:57:55.206 +06:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserToken<string>' as the properties are already covered by the index {'UserId', 'LoginProvider', 'Name'}.
+2024-10-05 01:57:55.329 +06:00 [DBG] The property 'IdentityUser.Discriminator' was created in shadow state because there are no eligible CLR members with a matching name.
+2024-10-05 01:57:55.449 +06:00 [DBG] Entity Framework Core 8.0.8 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.8' with options: None
+2024-10-05 01:57:55.493 +06:00 [DBG] Compiling query expression: 
+'DbSet<Product>()
+    .Include(p => p.Categories)
+    .Count()'
+2024-10-05 01:57:55.628 +06:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<int>(
+    asyncEnumerable: new SingleQueryingEnumerable<int>(
+        (RelationalQueryContext)queryContext, 
+        RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT COUNT(*)
+            FROM Products AS p), 
+        null, 
+        Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, int>, 
+        DataAccess.DataBaseContext.AppDbContext, 
+        False, 
+        False, 
+        True
+    ), 
+    cancellationToken: queryContext.CancellationToken)'
+2024-10-05 01:57:55.654 +06:00 [DBG] Creating DbConnection.
+2024-10-05 01:57:55.668 +06:00 [DBG] Created DbConnection. (12ms).
+2024-10-05 01:57:55.672 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:55.898 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:55.903 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 01:57:55.909 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2024-10-05 01:57:55.912 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (8ms).
+2024-10-05 01:57:55.917 +06:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2024-10-05 01:57:55.954 +06:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2024-10-05 01:57:55.971 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:55.977 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 14ms reading results.
+2024-10-05 01:57:55.980 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:55.985 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (4ms).
+2024-10-05 01:57:56.237 +06:00 [DBG] Compiling query expression: 
+'DbSet<Product>()
+    .Include(p => p.Categories)
+    .OrderBy( => .Id)
+    .Skip(__p_0)
+    .Take(__p_1)'
+2024-10-05 01:57:56.249 +06:00 [DBG] Including navigation: 'Product.Categories'.
+2024-10-05 01:57:56.306 +06:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<Product>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: Product.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Product.CategoriesId (int) Required FK Index, 1], [Property: Product.CreatedAtUtc (DateTime) Required, 2], [Property: Product.Description (string) MaxLength(200), 3], [Property: Product.Name (string) Required MaxLength(100), 4], [Property: Product.SKU (string) Required Index, 5], [Property: Product.StockAmount (double) Required, 6], [Property: Product.UnitPrice (double) Required, 7], [Property: Product.UnitType (string) Required MaxLength(20), 8], [Property: Product.UpdatedAtUtc (DateTime?), 9], [Property: Product.UserId (string) Required FK Index, 10] }
+            1 -> Dictionary<IProperty, int> { [Property: Categories.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 11], [Property: Categories.CreatedAtUtc (DateTime) Required, 12], [Property: Categories.Name (string) Required, 13], [Property: Categories.UpdatedAtUtc (DateTime?), 14], [Property: Categories.UsersId (string) FK Index, 15] }
+        SELECT t.Id, t.CategoriesId, t.CreatedAtUtc, t.Description, t.Name, t.SKU, t.StockAmount, t.UnitPrice, t.UnitType, t.UpdatedAtUtc, t.UserId, c.Id, c.CreatedAtUtc, c.Name, c.UpdatedAtUtc, c.UsersId
+        FROM 
+        (
+            SELECT p.Id, p.CategoriesId, p.CreatedAtUtc, p.Description, p.Name, p.SKU, p.StockAmount, p.UnitPrice, p.UnitType, p.UpdatedAtUtc, p.UserId
+            FROM Products AS p
+            ORDER BY p.Id ASC
+            OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+        ) AS t
+        INNER JOIN Categories AS c ON t.CategoriesId == c.Id
+        ORDER BY t.Id ASC), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Product>, 
+    DataAccess.DataBaseContext.AppDbContext, 
+    False, 
+    False, 
+    True
+)'
+2024-10-05 01:57:56.318 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:56.320 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:56.321 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 01:57:56.322 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-10-05 01:57:56.324 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (3ms).
+2024-10-05 01:57:56.327 +06:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoriesId], [t].[CreatedAtUtc], [t].[Description], [t].[Name], [t].[SKU], [t].[StockAmount], [t].[UnitPrice], [t].[UnitType], [t].[UpdatedAtUtc], [t].[UserId], [c].[Id], [c].[CreatedAtUtc], [c].[Name], [c].[UpdatedAtUtc], [c].[UsersId]
+FROM (
+    SELECT [p].[Id], [p].[CategoriesId], [p].[CreatedAtUtc], [p].[Description], [p].[Name], [p].[SKU], [p].[StockAmount], [p].[UnitPrice], [p].[UnitType], [p].[UpdatedAtUtc], [p].[UserId]
+    FROM [Products] AS [p]
+    ORDER BY [p].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoriesId] = [c].[Id]
+ORDER BY [t].[Id]
+2024-10-05 01:57:56.383 +06:00 [INF] Executed DbCommand (58ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoriesId], [t].[CreatedAtUtc], [t].[Description], [t].[Name], [t].[SKU], [t].[StockAmount], [t].[UnitPrice], [t].[UnitType], [t].[UpdatedAtUtc], [t].[UserId], [c].[Id], [c].[CreatedAtUtc], [c].[Name], [c].[UpdatedAtUtc], [c].[UsersId]
+FROM (
+    SELECT [p].[Id], [p].[CategoriesId], [p].[CreatedAtUtc], [p].[Description], [p].[Name], [p].[SKU], [p].[StockAmount], [p].[UnitPrice], [p].[UnitType], [p].[UpdatedAtUtc], [p].[UserId]
+    FROM [Products] AS [p]
+    ORDER BY [p].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoriesId] = [c].[Id]
+ORDER BY [t].[Id]
+2024-10-05 01:57:56.405 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.439 +06:00 [DBG] The navigation 'Product.Categories' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.448 +06:00 [DBG] Context 'AppDbContext' started tracking 'Categories' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.456 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.458 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.459 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.460 +06:00 [DBG] The navigation 'Product.Categories' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.461 +06:00 [DBG] Context 'AppDbContext' started tracking 'Categories' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.462 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.463 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.464 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.465 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:57:56.466 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:56.467 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 81ms reading results.
+2024-10-05 01:57:56.469 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:56.469 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (0ms).
+2024-10-05 01:57:56.481 +06:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-05 01:57:56.484 +06:00 [DBG] No information found on request to perform content negotiation.
+2024-10-05 01:57:56.485 +06:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-05 01:57:56.485 +06:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-05 01:57:56.487 +06:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-05 01:57:56.488 +06:00 [INF] Executing OkObjectResult, writing value of type 'Service.dtos.PaginatedServiceResponse`1[[System.Collections.Generic.List`1[[Service.dtos.ShowProductDto, Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-05 01:57:56.503 +06:00 [INF] Executed action WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1) in 1925.7145ms
+2024-10-05 01:57:56.506 +06:00 [INF] Executed endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:57:56.509 +06:00 [INF] HTTP GET /api/Product/ShowAllProduct responded 200 in 2049.2128 ms
+2024-10-05 01:57:56.512 +06:00 [DBG] 'AppDbContext' disposed.
+2024-10-05 01:57:56.515 +06:00 [DBG] Disposing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:57:56.518 +06:00 [DBG] Disposed connection to database '' on server '' (2ms).
+2024-10-05 01:57:56.520 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - 200 null application/json; charset=utf-8 2077.6053ms
+2024-10-05 01:58:02.630 +06:00 [DBG] Connection id "0HN74LRAE2V55" received FIN.
+2024-10-05 01:58:02.630 +06:00 [DBG] Connection id "0HN74LRAE2V56" received FIN.
+2024-10-05 01:58:02.634 +06:00 [DBG] Connection id "0HN74LRAE2V55" is closed. The last processed stream ID was 7.
+2024-10-05 01:58:02.634 +06:00 [DBG] The connection queue processing loop for 0HN74LRAE2V55 completed.
+2024-10-05 01:58:02.634 +06:00 [DBG] The connection queue processing loop for 0HN74LRAE2V56 completed.
+2024-10-05 01:58:02.634 +06:00 [DBG] Connection id "0HN74LRAE2V56" is closed. The last processed stream ID was 3.
+2024-10-05 01:58:02.635 +06:00 [DBG] Connection id "0HN74LRAE2V55" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 01:58:02.637 +06:00 [DBG] Connection id "0HN74LRAE2V56" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 01:58:02.640 +06:00 [DBG] Connection id "0HN74LRAE2V56" stopped.
+2024-10-05 01:58:02.640 +06:00 [DBG] Connection id "0HN74LRAE2V55" stopped.
+2024-10-05 01:58:13.014 +06:00 [DBG] Connection id "0HN74LRAE2V57" accepted.
+2024-10-05 01:58:13.016 +06:00 [DBG] Connection id "0HN74LRAE2V57" started.
+2024-10-05 01:58:13.018 +06:00 [DBG] Connection 0HN74LRAE2V57 established using the following protocol: "Tls12"
+2024-10-05 01:58:13.020 +06:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - null null
+2024-10-05 01:58:13.024 +06:00 [DBG] 1 candidate(s) found for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:58:13.025 +06:00 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2024-10-05 01:58:13.026 +06:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-05 01:58:13.027 +06:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2024-10-05 01:58:13.028 +06:00 [INF] CORS policy execution successful.
+2024-10-05 01:58:13.029 +06:00 [DBG] The request is a preflight request.
+2024-10-05 01:58:13.030 +06:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - 204 null null 9.7524ms
+2024-10-05 01:58:13.032 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - null null
+2024-10-05 01:58:13.035 +06:00 [DBG] 1 candidate(s) found for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:58:13.035 +06:00 [DBG] Endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)' with route pattern 'api/Product/ShowAllProduct' is valid for the request path '/api/Product/ShowAllProduct'
+2024-10-05 01:58:13.036 +06:00 [DBG] Request matched endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:58:13.037 +06:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-05 01:58:13.038 +06:00 [DBG] The request has an origin header: 'http://localhost:4200'.
+2024-10-05 01:58:13.038 +06:00 [INF] CORS policy execution successful.
+2024-10-05 01:58:13.041 +06:00 [DBG] Successfully validated the token.
+2024-10-05 01:58:13.042 +06:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2024-10-05 01:58:13.043 +06:00 [INF] Executing endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:58:13.044 +06:00 [INF] Route matched with {action = "ShowAllPaginatedProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ShowAllPaginatedProduct(shared.dtos.PaginationSortDto) on controller WebApplication1.Controllers.ProductController (WebApplication1).
+2024-10-05 01:58:13.047 +06:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-10-05 01:58:13.050 +06:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-05 01:58:13.051 +06:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648)","Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-05 01:58:13.052 +06:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-05 01:58:13.053 +06:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-05 01:58:13.054 +06:00 [DBG] Executing controller factory for controller WebApplication1.Controllers.ProductController (WebApplication1)
+2024-10-05 01:58:13.056 +06:00 [DBG] Executed controller factory for controller WebApplication1.Controllers.ProductController (WebApplication1)
+2024-10-05 01:58:13.057 +06:00 [DBG] Attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' ...
+2024-10-05 01:58:13.058 +06:00 [DBG] Attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' using the name '' in request data ...
+2024-10-05 01:58:13.060 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.PageSize' of type 'System.Int32' using the name 'PageSize' in request data ...
+2024-10-05 01:58:13.062 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.PageSize' of type 'System.Int32'.
+2024-10-05 01:58:13.063 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.PageNumber' of type 'System.Int32' using the name 'PageNumber' in request data ...
+2024-10-05 01:58:13.064 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.PageNumber' of type 'System.Int32'.
+2024-10-05 01:58:13.065 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.SortBy' of type 'System.String' using the name 'SortBy' in request data ...
+2024-10-05 01:58:13.066 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.SortBy' of type 'System.String'.
+2024-10-05 01:58:13.067 +06:00 [DBG] Attempting to bind property 'shared.dtos.PaginationSortDto.SortOrder' of type 'System.String' using the name 'SortOrder' in request data ...
+2024-10-05 01:58:13.068 +06:00 [DBG] Done attempting to bind property 'shared.dtos.PaginationSortDto.SortOrder' of type 'System.String'.
+2024-10-05 01:58:13.069 +06:00 [DBG] Done attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:58:13.069 +06:00 [DBG] Done attempting to bind parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:58:13.070 +06:00 [DBG] Attempting to validate the bound parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto' ...
+2024-10-05 01:58:13.071 +06:00 [DBG] Done attempting to validate the bound parameter 'paginationSortDto' of type 'shared.dtos.PaginationSortDto'.
+2024-10-05 01:58:13.118 +06:00 [DBG] Entity Framework Core 8.0.8 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.8' with options: None
+2024-10-05 01:58:13.125 +06:00 [DBG] Creating DbConnection.
+2024-10-05 01:58:13.128 +06:00 [DBG] Created DbConnection. (2ms).
+2024-10-05 01:58:13.129 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.130 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.131 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 01:58:13.132 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-10-05 01:58:13.132 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-10-05 01:58:13.133 +06:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2024-10-05 01:58:13.136 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2024-10-05 01:58:13.137 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.138 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 0ms reading results.
+2024-10-05 01:58:13.139 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.140 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (0ms).
+2024-10-05 01:58:13.142 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.144 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.145 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 01:58:13.146 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-10-05 01:58:13.146 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-10-05 01:58:13.147 +06:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoriesId], [t].[CreatedAtUtc], [t].[Description], [t].[Name], [t].[SKU], [t].[StockAmount], [t].[UnitPrice], [t].[UnitType], [t].[UpdatedAtUtc], [t].[UserId], [c].[Id], [c].[CreatedAtUtc], [c].[Name], [c].[UpdatedAtUtc], [c].[UsersId]
+FROM (
+    SELECT [p].[Id], [p].[CategoriesId], [p].[CreatedAtUtc], [p].[Description], [p].[Name], [p].[SKU], [p].[StockAmount], [p].[UnitPrice], [p].[UnitType], [p].[UpdatedAtUtc], [p].[UserId]
+    FROM [Products] AS [p]
+    ORDER BY [p].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoriesId] = [c].[Id]
+ORDER BY [t].[Id]
+2024-10-05 01:58:13.151 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoriesId], [t].[CreatedAtUtc], [t].[Description], [t].[Name], [t].[SKU], [t].[StockAmount], [t].[UnitPrice], [t].[UnitType], [t].[UpdatedAtUtc], [t].[UserId], [c].[Id], [c].[CreatedAtUtc], [c].[Name], [c].[UpdatedAtUtc], [c].[UsersId]
+FROM (
+    SELECT [p].[Id], [p].[CategoriesId], [p].[CreatedAtUtc], [p].[Description], [p].[Name], [p].[SKU], [p].[StockAmount], [p].[UnitPrice], [p].[UnitType], [p].[UpdatedAtUtc], [p].[UserId]
+    FROM [Products] AS [p]
+    ORDER BY [p].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoriesId] = [c].[Id]
+ORDER BY [t].[Id]
+2024-10-05 01:58:13.153 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.154 +06:00 [DBG] The navigation 'Product.Categories' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.155 +06:00 [DBG] Context 'AppDbContext' started tracking 'Categories' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.156 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.157 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.157 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.159 +06:00 [DBG] The navigation 'Product.Categories' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.161 +06:00 [DBG] Context 'AppDbContext' started tracking 'Categories' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.162 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.162 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.163 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.164 +06:00 [DBG] Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2024-10-05 01:58:13.165 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.165 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 12ms reading results.
+2024-10-05 01:58:13.166 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.167 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (0ms).
+2024-10-05 01:58:13.168 +06:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-05 01:58:13.169 +06:00 [DBG] No information found on request to perform content negotiation.
+2024-10-05 01:58:13.170 +06:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-05 01:58:13.170 +06:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-05 01:58:13.171 +06:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-05 01:58:13.172 +06:00 [INF] Executing OkObjectResult, writing value of type 'Service.dtos.PaginatedServiceResponse`1[[System.Collections.Generic.List`1[[Service.dtos.ShowProductDto, Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-05 01:58:13.173 +06:00 [INF] Executed action WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1) in 118.6599ms
+2024-10-05 01:58:13.174 +06:00 [INF] Executed endpoint 'WebApplication1.Controllers.ProductController.ShowAllPaginatedProduct (WebApplication1)'
+2024-10-05 01:58:13.176 +06:00 [INF] HTTP GET /api/Product/ShowAllProduct responded 200 in 137.1290 ms
+2024-10-05 01:58:13.177 +06:00 [DBG] 'AppDbContext' disposed.
+2024-10-05 01:58:13.178 +06:00 [DBG] Disposing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 01:58:13.179 +06:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-10-05 01:58:13.180 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/api/Product/ShowAllProduct?pageSize=10&pageNumber=1&sortBy=Id&sortOrder=asc - 200 null application/json; charset=utf-8 148.2747ms
+2024-10-05 01:58:22.658 +06:00 [DBG] Connection id "0HN74LRAE2V57" received FIN.
+2024-10-05 01:58:22.661 +06:00 [DBG] Connection id "0HN74LRAE2V57" is closed. The last processed stream ID was 3.
+2024-10-05 01:58:22.661 +06:00 [DBG] The connection queue processing loop for 0HN74LRAE2V57 completed.
+2024-10-05 01:58:22.662 +06:00 [DBG] Connection id "0HN74LRAE2V57" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 01:58:22.671 +06:00 [DBG] Connection id "0HN74LRAE2V57" stopped.
+2024-10-05 02:14:14.638 +06:00 [DBG] Connection id "0HN74LRAE2V58" accepted.
+2024-10-05 02:14:14.644 +06:00 [DBG] Connection id "0HN74LRAE2V58" started.
+2024-10-05 02:14:14.686 +06:00 [DBG] Connection 0HN74LRAE2V58 established using the following protocol: "Tls12"
+2024-10-05 02:14:14.689 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-05 02:14:14.694 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2024-10-05 02:14:14.697 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 8.1583ms
+2024-10-05 02:14:14.743 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.7777ms
+2024-10-05 02:14:15.142 +06:00 [INF] Request starting HTTP/2 GET https://localhost:7028/swagger/v1/swagger.json - null null
+2024-10-05 02:14:15.144 +06:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-05 02:14:15.146 +06:00 [DBG] Request did not match any endpoints
+2024-10-05 02:14:15.177 +06:00 [INF] Request finished HTTP/2 GET https://localhost:7028/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.7785ms
+2024-10-05 02:14:19.154 +06:00 [DBG] Connection id "0HN74LRAE2V58" received FIN.
+2024-10-05 02:14:19.157 +06:00 [DBG] Connection id "0HN74LRAE2V58" is closed. The last processed stream ID was 5.
+2024-10-05 02:14:19.157 +06:00 [DBG] The connection queue processing loop for 0HN74LRAE2V58 completed.
+2024-10-05 02:14:19.158 +06:00 [DBG] Connection id "0HN74LRAE2V58" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 02:14:19.167 +06:00 [DBG] Connection id "0HN74LRAE2V58" stopped.
+2024-10-05 02:15:03.622 +06:00 [DBG] Connection id "0HN74LRAE2V59" accepted.
+2024-10-05 02:15:03.625 +06:00 [DBG] Connection id "0HN74LRAE2V59" started.
+2024-10-05 02:15:03.630 +06:00 [DBG] Connection 0HN74LRAE2V59 established using the following protocol: "Tls12"
+2024-10-05 02:15:03.633 +06:00 [INF] Request starting HTTP/2 POST https://localhost:7028/api/User/register - application/json 101
+2024-10-05 02:15:03.638 +06:00 [DBG] 1 candidate(s) found for the request path '/api/User/register'
+2024-10-05 02:15:03.640 +06:00 [DBG] Endpoint 'WebApplication1.Controllers.UserController.Registraion (WebApplication1)' with route pattern 'api/User/register' is valid for the request path '/api/User/register'
+2024-10-05 02:15:03.641 +06:00 [DBG] Request matched endpoint 'WebApplication1.Controllers.UserController.Registraion (WebApplication1)'
+2024-10-05 02:15:03.642 +06:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-05 02:15:03.642 +06:00 [DBG] The request has an origin header: 'https://localhost:7028'.
+2024-10-05 02:15:03.643 +06:00 [INF] CORS policy execution successful.
+2024-10-05 02:15:03.652 +06:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/4/2024 7:52:09 PM', Current time (UTC): '10/4/2024 8:15:03 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-10-05 02:15:03.656 +06:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/4/2024 7:52:09 PM', Current time (UTC): '10/4/2024 8:15:03 PM'.
+2024-10-05 02:15:03.656 +06:00 [INF] Executing endpoint 'WebApplication1.Controllers.UserController.Registraion (WebApplication1)'
+2024-10-05 02:15:03.665 +06:00 [INF] Route matched with {action = "Registraion", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Registraion(Service.dtos.UseRegistrationDto) on controller WebApplication1.Controllers.UserController (WebApplication1).
+2024-10-05 02:15:03.666 +06:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-10-05 02:15:03.667 +06:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-05 02:15:03.668 +06:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648)","Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-05 02:15:03.669 +06:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-05 02:15:03.670 +06:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-05 02:15:03.670 +06:00 [DBG] Executing controller factory for controller WebApplication1.Controllers.UserController (WebApplication1)
+2024-10-05 02:15:03.681 +06:00 [DBG] Executed controller factory for controller WebApplication1.Controllers.UserController (WebApplication1)
+2024-10-05 02:15:03.682 +06:00 [DBG] Attempting to bind parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto' ...
+2024-10-05 02:15:03.683 +06:00 [DBG] Attempting to bind parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto' using the name '' in request data ...
+2024-10-05 02:15:03.685 +06:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-05 02:15:03.691 +06:00 [DBG] Connection id "0HN74LRAE2V59", Request id "0HN74LRAE2V59:00000001": started reading request body.
+2024-10-05 02:15:03.691 +06:00 [DBG] Connection id "0HN74LRAE2V59", Request id "0HN74LRAE2V59:00000001": done reading request body.
+2024-10-05 02:15:03.705 +06:00 [DBG] JSON input formatter succeeded, deserializing to type 'Service.dtos.UseRegistrationDto'
+2024-10-05 02:15:03.706 +06:00 [DBG] Done attempting to bind parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto'.
+2024-10-05 02:15:03.707 +06:00 [DBG] Done attempting to bind parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto'.
+2024-10-05 02:15:03.707 +06:00 [DBG] Attempting to validate the bound parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto' ...
+2024-10-05 02:15:03.709 +06:00 [DBG] Done attempting to validate the bound parameter 'registrationDto' of type 'Service.dtos.UseRegistrationDto'.
+2024-10-05 02:15:03.722 +06:00 [DBG] User password validation failed: PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper.
+2024-10-05 02:15:03.738 +06:00 [DBG] Entity Framework Core 8.0.8 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:8.0.8' with options: None
+2024-10-05 02:15:03.746 +06:00 [DBG] Compiling query expression: 
+'DbSet<IdentityRole>()
+    .SingleOrDefault(r => r.NormalizedName == __normalizedRoleName_0)'
+2024-10-05 02:15:03.757 +06:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<IdentityRole>(
+    asyncEnumerable: new SingleQueryingEnumerable<IdentityRole>(
+        (RelationalQueryContext)queryContext, 
+        RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: IdentityRole.Id (string) Required PK AfterSave:Throw, 0], [Property: IdentityRole.ConcurrencyStamp (string) Concurrency, 1], [Property: IdentityRole.Name (string) MaxLength(256), 2], [Property: IdentityRole.NormalizedName (string) Index MaxLength(256), 3] }
+            SELECT TOP(2) a.Id, a.ConcurrencyStamp, a.Name, a.NormalizedName
+            FROM AspNetRoles AS a
+            WHERE a.NormalizedName == @__normalizedRoleName_0), 
+        null, 
+        Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, IdentityRole>, 
+        DataAccess.DataBaseContext.AppDbContext, 
+        False, 
+        False, 
+        True
+    ), 
+    cancellationToken: queryContext.CancellationToken)'
+2024-10-05 02:15:03.765 +06:00 [DBG] Creating DbConnection.
+2024-10-05 02:15:03.766 +06:00 [DBG] Created DbConnection. (0ms).
+2024-10-05 02:15:03.767 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.833 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.835 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 02:15:03.836 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-10-05 02:15:03.837 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-10-05 02:15:03.837 +06:00 [DBG] Executing DbCommand [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-10-05 02:15:03.855 +06:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-10-05 02:15:03.859 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.863 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 5ms reading results.
+2024-10-05 02:15:03.864 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.865 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (0ms).
+2024-10-05 02:15:03.868 +06:00 [DBG] Opening connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.869 +06:00 [DBG] Opened connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.869 +06:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2024-10-05 02:15:03.870 +06:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2024-10-05 02:15:03.870 +06:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2024-10-05 02:15:03.871 +06:00 [DBG] Executing DbCommand [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-10-05 02:15:03.874 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2024-10-05 02:15:03.875 +06:00 [DBG] Closing data reader to 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.876 +06:00 [DBG] A data reader for 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' is being disposed after spending 0ms reading results.
+2024-10-05 02:15:03.878 +06:00 [DBG] Closing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.879 +06:00 [DBG] Closed connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS' (1ms).
+2024-10-05 02:15:03.883 +06:00 [INF] Executed action WebApplication1.Controllers.UserController.Registraion (WebApplication1) in 212.3416ms
+2024-10-05 02:15:03.884 +06:00 [INF] Executed endpoint 'WebApplication1.Controllers.UserController.Registraion (WebApplication1)'
+2024-10-05 02:15:03.886 +06:00 [ERR] Role STRING does not exist.
+2024-10-05 02:15:03.889 +06:00 [ERR] HTTP POST /api/User/register responded 500 in 242.7561 ms
+2024-10-05 02:15:03.890 +06:00 [DBG] 'AppDbContext' disposed.
+2024-10-05 02:15:03.891 +06:00 [DBG] Disposing connection to database 'Stocks' on server 'LAPTOP-LNLQUMMM\SQLEXPRESS'.
+2024-10-05 02:15:03.892 +06:00 [DBG] Disposed connection to database '' on server '' (0ms).
+2024-10-05 02:15:03.894 +06:00 [INF] Request finished HTTP/2 POST https://localhost:7028/api/User/register - 500 null application/json; charset=utf-8 260.5152ms
+2024-10-05 02:15:09.241 +06:00 [DBG] Connection id "0HN74LRAE2V59" received FIN.
+2024-10-05 02:15:09.243 +06:00 [DBG] Connection id "0HN74LRAE2V59" is closed. The last processed stream ID was 1.
+2024-10-05 02:15:09.243 +06:00 [DBG] The connection queue processing loop for 0HN74LRAE2V59 completed.
+2024-10-05 02:15:09.245 +06:00 [DBG] Connection id "0HN74LRAE2V59" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-05 02:15:09.253 +06:00 [DBG] Connection id "0HN74LRAE2V59" stopped.
