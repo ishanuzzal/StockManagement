@@ -38,6 +38,8 @@
 -**Email**: Safiqul@gmail.com
 -**Password**: Uzzal123@
 
+### ER Diagram: ![Blank diagram](https://github.com/ishanuzzal/StockManagement/blob/master/ER.png)
+
 
 ## Technologies Used
 - **Backend**: ASP.NET Core Web API
