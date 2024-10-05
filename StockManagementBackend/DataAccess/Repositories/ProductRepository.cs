@@ -31,6 +31,7 @@ namespace DataAccess.Repositories
             if (filter != null)
             {
                 query = query.Where(filter);
+                totalItemsInDatabase = query.Count();
             }
 
             if (!string.IsNullOrEmpty(paginationSortDto.SortBy))

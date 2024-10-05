@@ -142,12 +142,36 @@
 
 	border: none;
 }
+ 
 
-.sidebar li:hover{
+
+.sidebar li a:hover{
     background-color: white;
     color: var(--nav-color);
 	cursor: pointer;
 }
+
+
+
+.collapse{
+    color: var(--nav-color) !important;
+	cursor: pointer;
+}
+
+.sidebar .collapse .card-body a {
+	color: white;
+	text-decoration: none;
+	display: block;
+	padding: 5px 0;
+	transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for dropdown links */
+  .sidebar .collapse .card-body a:hover {
+	background-color: var(--nav-color) !important;
+	color: white;
+  }
+
 
 
 

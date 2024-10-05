@@ -8,6 +8,7 @@ import { DashboardContentComponent } from './Components/dashboard-content/dashbo
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { ShowAllProductComponent } from './Components/show-all-product/show-all-product.component';
+import { SellProductComponent } from './Components/sell-product/sell-product.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,10 @@ export const routes: Routes = [
             {
                 path: "Addproducts",
                 component: AddProductComponent
+            },
+            {
+                path: "SellProduct",
+                component: SellProductComponent
             },
             {
                 path: "ShowProducts",

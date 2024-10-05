@@ -43,7 +43,7 @@ export class ShowAllProductComponent implements OnInit {
 
   totalRecords: number = 100;
   displayedColumns: string[] = ['Name', 'SKU', 'Description', 'StockAmount', 'UnitPrice', 'CategoryName', 'StockLevel', 'Action'];
-  Product!: Product[];
+  Product: Product[] = [];
   dataSource = new MatTableDataSource<Product>(this.Product);
   pageSize = 10;
   pageNumber = 0;
@@ -54,9 +54,13 @@ export class ShowAllProductComponent implements OnInit {
 
   ngOnInit(): void {
     // Listen for URL parameters and handle accordingly
+    this.refresh();
+    console.log("Product array on initialization:", this.Product);
+  }
+
+  refresh(){
     this.activatedRoute.queryParams.subscribe(params => {
       const skuQuery = params['SKU'];
-
       if (skuQuery) {
         // If a search query is present, set search mode and perform search
         this.SearchValues.SKU = skuQuery;
@@ -74,19 +78,23 @@ export class ShowAllProductComponent implements OnInit {
     this.sort.sortChange.subscribe((event) => {
       this.sortBy = event.active;
       this.sortDirection = event.direction || 'asc';
-      this.LoadProduct(this.pageSize, this.pageNumber, this.sortBy, this.sortDirection);
+      this.refresh();
     });
   }
 
   changingPage(event: PageEvent) {
     this.pageNumber = event.pageIndex;
-    this.LoadProduct(this.pageSize, this.pageNumber, this.sortBy, this.sortDirection);
+    this.pageSize = event.pageSize;
+    console.log(event.length,event.pageIndex,event.pageSize,this.pageSize)
+    this.refresh();
+    // this.LoadProduct(event.pageSize,event.pageIndex, this.sortBy, this.sortDirection);
   }
 
   LoadProduct(pageSize: number, pageIndex: number, sortBy: string, sortDirection: string) {
     this.productHttp.GetAllPaginatedProducts(pageSize, pageIndex + 1, sortBy, sortDirection).subscribe((response: any) => {
       this.dataSource.data = response.Data;
-      this.totalRecords = response.TotalItemInDatabase;
+      this.Product = response.Data;
+      this.totalRecords = response.TotalItemDataBase
     });
   }
 
@@ -95,7 +103,7 @@ export class ShowAllProductComponent implements OnInit {
     .subscribe((response: any) => {
       console.log(response)
       this.dataSource.data = response.Data;
-      this.totalRecords = response.TotalItemInDatabase;
+      this.totalRecords = response.TotalItemDataBase;
 
       // Update the URL with the search query parameter
       this.router.navigate([], {
@@ -114,8 +122,23 @@ export class ShowAllProductComponent implements OnInit {
     console.log(id);
   }
   
-  SellProduct(id: number){
-    console.log(id);
+  SellProduct(productId: number): void {
+    console.log(productId)  
+    console.log(this.Product)
+    console.log("dfdf")  
+    const selectedProduct = this.Product.find(p => p.Id === productId);
+    console.log(selectedProduct)
+    if (selectedProduct) {
+      // Navigate to SellProductComponent with query parameters
+      this.router.navigate(['dashboard', 'SellProduct'], {
+        queryParams: {
+          Id: selectedProduct.Id,
+          UnitPrice: selectedProduct.UnitPrice,
+          Name: selectedProduct.Name,
+          StockAmount: selectedProduct.StockAmount
+        }
+      });
+    }
   }
 
   InventoryStatus(){

@@ -41,6 +41,9 @@ namespace Service.dtos
         [Required]
         public int Id {  get; set; }
 
+        [Required]
+        public string Name { get; set; }
+
         [Range(0, double.MaxValue)]
         public double Qty { get; set; }
 

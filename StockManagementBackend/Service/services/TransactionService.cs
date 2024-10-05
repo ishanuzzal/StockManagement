@@ -121,7 +121,7 @@ namespace Service.services
 
                         table.AddCell(new Phrase(printProduct.ProductName, bodyFont));
                         table.AddCell(new Phrase(transaction.Qty.ToString(), bodyFont));
-                        table.AddCell(new Phrase($"${transaction.TotalPrice:0.00}", bodyFont));
+                        table.AddCell(new Phrase($"{transaction.TotalPrice:0.00}", bodyFont));
                         table.AddCell(new Phrase(transaction.TransactionTypes.ToString(), bodyFont));
 
                         document.Add(table);
@@ -220,7 +220,7 @@ namespace Service.services
 
                         table.AddCell(new Phrase(printProduct.ProductName, bodyFont));
                         table.AddCell(new Phrase(transaction.Qty.ToString(), bodyFont));
-                        table.AddCell(new Phrase($"${transaction.TotalPrice:0.00}", bodyFont));
+                        table.AddCell(new Phrase($"{transaction.TotalPrice:0.00}", bodyFont));
                         table.AddCell(new Phrase(transaction.TransactionTypes.ToString(), bodyFont));
 
                         document.Add(table);

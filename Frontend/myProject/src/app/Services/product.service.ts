@@ -23,6 +23,10 @@ export class ProductService {
     return this.http.post(`${this.url}/BuyProduct`, data, { responseType: 'blob' });
   }
 
+  SellProduct(data:any){
+    return this.http.post(`${this.url}/SellProduct`, data, { responseType: 'blob' });
+  }
+
   SearchProduct(SKU:string,pageSize:number,pageIndex:number,sortBy:string,sortDirection:string){
     return this.http.get(`${this.url}/GetProductQuery`,{
       params:{
