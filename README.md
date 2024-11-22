@@ -15,9 +15,9 @@
   - Associate each product with a category and inventory details.
 
 - ### Inventory Tracking
-  - Track stock levels of products in real-time.
+  - Track stock levels of products in real time.
   - Automatically update inventory based on buy and sell transactions.
-  - Generate inventory level reports for stock analysis.
+  - Generate inventory-level reports for stock analysis.
 
 - ### Transaction Management
   - Supports two types of transactions:
@@ -33,10 +33,6 @@
   - Secure login for users.
   - Role-based access control to restrict functionalities based on user roles.
   - Admin and other roles have specific permissions for controlled access.
-
-### Admin Info
--**Email**: Safiqul@gmail.com
--**Password**: Uzzal123@
 
 ### ER Diagram: ![Blank diagram](https://github.com/ishanuzzal/StockManagement/blob/master/ER.png)
 
